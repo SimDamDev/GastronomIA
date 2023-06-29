@@ -1,11 +1,25 @@
 import fastify from 'fastify';
 import "dotenv/config.js";
+import {MongoClient} from 'mongodb'
 
 const app = fastify();
 
 app.get('/', async (request, reply) => {
-    reply.send('Hello, World, test1234');
-});
+    const client = new MongoClient(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true});
+    
+    try {
+        await client.connect();
+        const database = client.db('Gastronom-ia');
+        const collection = database.collection('recettes');
+        const result = await collection.findOne({});
+        reply.send(result);
+    } catch (error) {
+        console.error('Error connecting to MongoDB:', error);
+        reply.status(500).send('Internal Server Error');
+      } finally {
+        await client.close();
+      }
+    });
 
 const options = {
     port: process.env.PORT

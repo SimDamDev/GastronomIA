@@ -1,6 +1,7 @@
 {
     "cSpell.words": [
-        "fastify"
+        "fastify",
+        "openai"
     ],
     "files.exclude": {
         "**/.git": true,

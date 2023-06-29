@@ -1,13 +1,14 @@
-import Fastify from 'fastify';
+import fastify from 'fastify';
+import "dotenv/config.js";
 
-const app = Fastify();
+const app = fastify();
 
 app.get('/', async (request, reply) => {
     reply.send('Hello, World, test1234');
 });
 
 const options = {
-    port: 3000,
+    port: process.env.PORT
 };
 
 app.listen(options, (err, address) => {

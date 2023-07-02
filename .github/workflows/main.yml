@@ -11,6 +11,6 @@ jobs:
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
-        server: simdam.ch
+        server: sftp://simdam.ch:22
         username: gastronomia
         password: ${{ secrets.FTP_PASSWORD }}

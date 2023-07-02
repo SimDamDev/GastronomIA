@@ -4,6 +4,8 @@ import {MongoClient} from 'mongodb'
 
 const app = fastify();
 
+console.log(process.env.MONGO_URI)
+
 app.get('/', async (request, reply) => {
     const client = new MongoClient(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true});
     

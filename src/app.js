@@ -11,7 +11,7 @@ app.get('/', async (request, reply) => {
     
     try {
         await client.connect();
-        const database = client.db('GastronomIA');
+        const database = client.db('gastronomIA');
         const collection = database.collection('recipes');
         const result = await collection.findOne({});
         reply.send(result);

@@ -9,7 +9,7 @@ app.get('/', async (request, reply) => {
     
     try {
         await client.connect();
-        const database = client.db('Gastronom-ia');
+        const database = client.db('GastronomIA');
         const collection = database.collection('recettes');
         const result = await collection.findOne({});
         reply.send(result);
@@ -22,7 +22,8 @@ app.get('/', async (request, reply) => {
     });
 
 const options = {
-    port: process.env.PORT
+    port: process.env.PORT,
+    host: "192.16.1.140"
 };
 
 app.listen(options, (err, address) => {

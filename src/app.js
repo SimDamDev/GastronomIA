@@ -12,7 +12,7 @@ app.get('/', async (request, reply) => {
     try {
         await client.connect();
         const database = client.db('GastronomIA');
-        const collection = database.collection('recipes');
+        const collection = database.collection('recettes');
         const result = await collection.findOne({});
         reply.send(result);
     } catch (error) {

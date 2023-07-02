@@ -23,7 +23,7 @@ app.get('/', async (request, reply) => {
 
 const options = {
     port: process.env.PORT,
-    host: "192.168.1.140"
+    host: process.env.HOST
 };
 
 app.listen(options, (err, address) => {

@@ -1,5 +1,10 @@
 
 function routes(fastify, options, done) {
+  
+    fastify.get('/', async (request, reply) => {
+      return reply.sendFile('index.html');
+    });
+
     fastify.get('/ingredients', async (request, reply) => {
       reply.send('Here will be all ingredients');
     });

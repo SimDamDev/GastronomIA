@@ -1,10 +1,16 @@
 import fastify from 'fastify';
-import {dbConnect} from './services/db.js'
+import path from 'path';
+import staticFiles from 'fastify-static';
 import routes from './routes/indexRoutes.js';
+import {dbConnect} from './services/db.js'
 import {errorHandler} from './utils/errorHandler.js';
 import {config} from '../config/config.js';
 
 const app = fastify();
+
+app.register(staticFiles, {
+    root: path.join(__dirname, '../public'),
+});
 
 dbConnect();
 

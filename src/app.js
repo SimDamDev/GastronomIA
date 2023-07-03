@@ -30,10 +30,6 @@ app.setErrorHandler(errorHandler)
 //       }
 //     });
 
-// const options = {
-//     port: process.env.PORT,
-//     host: process.env.HOST
-// };
 
 app.listen(config.server, (err, address) => {
     if (err) {

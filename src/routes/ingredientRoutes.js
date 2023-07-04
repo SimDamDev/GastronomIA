@@ -6,7 +6,7 @@ function routes(fastify, options, done) {
         return getIngredients(request, reply);
     });
 
-    fastify.get('/ingredient/add', async (request, reply) => {
+    fastify.get('/ingredients/add', async (request, reply) => {
         return addIngredient(request, reply);
     });
 

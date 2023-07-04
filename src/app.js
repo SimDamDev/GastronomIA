@@ -1,15 +1,13 @@
 // Import necessary modules
-import staticFilesConfig from './staticFiles.js';
+import fastify from 'fastify';
+import staticFiles from './staticFiles.js';
 import routes from './routes/indexRoutes.js';
 import {dbConnect} from './services/db.js'
 import {errorHandler} from './utils/errorHandler.js';
 
-// Initialize the application
-const app = express();
-
-// Configure static files
+const app = fastify();
 // This function configures where and how static files will be served
-app.register(staticFilesConfig);
+app.register(staticFiles);
 
 // Connect to the database
 // This function establishes a connection to our database

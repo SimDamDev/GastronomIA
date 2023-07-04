@@ -1,12 +1,12 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-import staticFiles from '@fastify/static';
+import fastifyStatic from '@fastify/static';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const staticFilesConfig = staticFiles({
+export default async function staticFiles(fastify, options) {
+  fastify.register(fastifyStatic, {
     root: path.join(__dirname, '../public'),
-});
-
-export default staticFilesConfig;
+  });
+}

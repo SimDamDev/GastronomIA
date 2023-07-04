@@ -1,6 +1,7 @@
 // Import necessary modules
 import mongoose from 'mongoose';
-import { tasteNoteEnum } from '../../config/constants';
+import { tasteNoteEnum, nutriScoreEnum } from '../../config/constants';
+
 
 // Define the Ingredient schema
 const ingredientSchema = new mongoose.Schema({
@@ -27,6 +28,7 @@ const ingredientSchema = new mongoose.Schema({
   },
   nutriScore: {
     type: String,
+    enum: nutriScoreEnum,
     required: false,
   },
   category: [{

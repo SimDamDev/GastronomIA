@@ -1,16 +1,17 @@
 // Import necessary services or models
-import { getRecipesService, addRecipeService } from '../services/indexService.js';
+import { getIngredientsService, addIngredientService } from '../services/indexService.js';
 
-export async function getRecipes(request, reply) {
+export async function getIngredients(request, reply) {
   // Here you can get all ingredients from your database and send them to the client
   // const ingredients = await getIngredientsService();
   // reply.send(ingredients);
-  reply.send('Here will be all recipes');
+  reply.send('Here will be all ingredients');
 }
 
-export async function addRecipe(request, reply) {
+export async function addIngredient(request, reply) {
   // Here you can handle the addition of a new ingredient
   // const newIngredient = await addIngredientService(request.body);
   // reply.send(newIngredient);
-  reply.send('Here will be the form to add a recipe');
+  reply.send('Here will be the form to add an ingredient');
 }
+

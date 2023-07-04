@@ -1,6 +1,7 @@
 // Import necessary modules
 import mongoose from 'mongoose';
 import { tasteNoteEnum, nutriScoreEnum } from '../../config/constants';
+import { arrayLimit } from '../utils/validators.js';
 
 
 // Define the Ingredient schema
@@ -13,10 +14,14 @@ const ingredientSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
-  units: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Unit-ingredient',
-  }],
+  units: {
+    type: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Unit',
+    }],
+    required: true,
+    validate: [arrayLimit, '{PATH} needs at least 1 unit']
+  },
   nutritionalValues: {
     calories: Number, // Calories par 100g
     proteins: Number, // Protéines par 100g
@@ -34,10 +39,11 @@ const ingredientSchema = new mongoose.Schema({
   category: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Category-ingredient',
+    default: ""/* Default category ID */,
   }],
   image: {
     type: String,
-    required: false,
+    default: ""/* Default image URL */,
   },
   seasonality: [{
     region: {
@@ -61,3 +67,4 @@ const Ingredient = mongoose.model('Ingredient', ingredientSchema);
 
 // Export the model
 export default Ingredient;
+

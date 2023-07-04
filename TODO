@@ -1,3 +1,5 @@
 //TODO add sh for start and stop test server
 
-//add auto deploy somehow
+//TODO add auto deploy somehow
+
+//TODO add units in database (controller, model, service, routes)

@@ -39,10 +39,16 @@ const ingredientSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
-  seasonality: {
-    type: [String],
-    required: false,
-  },
+  seasonality: [{
+    region: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Region',
+    },
+    months: [{
+      type: String,
+      enum: monthEnum,
+    }],
+  }],
   tasteNote: {
     type: String,
     enum: tasteNoteEnum,

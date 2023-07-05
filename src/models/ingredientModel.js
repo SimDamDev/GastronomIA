@@ -1,6 +1,6 @@
 // Import necessary modules
 import mongoose from 'mongoose';
-import { tasteNoteEnum, nutriScoreEnum } from '../../config/constants';
+import { tasteNoteEnum, nutriScoreEnum, monthEnum } from '../../config/constants.js';
 import { arrayLimit } from '../utils/validators.js';
 
 

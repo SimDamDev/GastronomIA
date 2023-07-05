@@ -60,6 +60,10 @@ const ingredientSchema = new mongoose.Schema({
     enum: tasteNoteEnum,
     required: false,
   },
+  density: {
+    type: Number,
+    required: false, //need this for conversion between units in g/mL
+  },
 });
 
 // Create the model

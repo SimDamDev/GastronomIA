@@ -16,10 +16,14 @@ const unitSchema = new mongoose.Schema({
         enum: Object.values(unitType),
         required: false,
       },
-      averageVolume: {
+      conversionFactor: { // Conversion factor to base unit
       type: Number,
       required: false,
     },
+    baseUnit: { // Base unit g or mL
+        type: String,
+        required: true,
+      },
     icon: {
       type: String,
       required: config.requireUnitIcons,

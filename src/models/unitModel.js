@@ -1,6 +1,7 @@
 // Import necessary modules
 import mongoose from 'mongoose';
 import config from '../../config/config.js';
+import { unitType } from '../../config/constants.js'; 
 
 const unitSchema = new mongoose.Schema({
     name: {

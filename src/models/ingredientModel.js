@@ -71,4 +71,3 @@ const Ingredient = mongoose.model('Ingredient', ingredientSchema);
 
 // Export the model
 export default Ingredient;
-

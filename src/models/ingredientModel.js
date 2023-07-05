@@ -78,9 +78,6 @@ const ingredientSchema = new mongoose.Schema({
 // Create the model
 const Ingredient = mongoose.model('Ingredient', ingredientSchema);
 
-// Export the model
-export default Ingredient;
-
 //FEATURE: Add a field for the origin of the ingredient
 //FEATURE: Add a field for possible substitutes of the ingredient
 //FEATURE: Add a field for potential allergens of the ingredient
@@ -89,3 +86,4 @@ export default Ingredient;
 //FEATURE: Add a field for the storage method of the ingredient
 //FEATURE: Add a field for the date when the ingredient was added or last updated
 //FEATURE: Add a field for the user who added or last updated the ingredient
+export default Ingredient;

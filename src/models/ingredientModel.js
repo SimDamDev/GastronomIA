@@ -31,6 +31,7 @@ const ingredientSchema = new mongoose.Schema({
     sugar: Number, // Sugar per 100g
     sodium: Number, // Sodium per 100g
     // IMPROVE: Add validation to ensure nutritional values are positive numbers
+    //FEATURE add vitamins and minerals
   },
   nutriScore: {
     type: String,
@@ -82,3 +83,5 @@ export default Ingredient;
 //FEATURE: Add a field for popular recipes using the ingredient
 //FEATURE: Add a field for the shelf life of the ingredient
 //FEATURE: Add a field for the storage method of the ingredient
+//FEATURE: Add a field for the date when the ingredient was added or last updated
+//FEATURE: Add a field for the user who added or last updated the ingredient

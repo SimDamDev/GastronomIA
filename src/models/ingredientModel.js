@@ -38,7 +38,7 @@ const ingredientSchema = new mongoose.Schema({
   },
   category: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Category-ingredient',
+    ref: 'ingredientCategory',
     default: ""/* Default category ID */,
   }],
   image: {

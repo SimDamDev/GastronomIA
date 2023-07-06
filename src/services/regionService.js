@@ -12,8 +12,8 @@ class RegionService {
     return region;
   }
 
-  async getAllRegion(){
-    const regions = await Region.find()
+  async getAllRegion(page, perPage){
+    const regions = await Region.find().skip((page - 1) * perPage).limit(perPage);
     return regions
   }
 
@@ -34,6 +34,16 @@ class RegionService {
     return children;
   }
 
+  async searchRegions(query){
+    const regions = await Region.find({
+      $or: [
+        { name: { $regex: query, $options: 'i' } },
+        { description: { $regex: query, $options: 'i' } }
+      ]
+    });
+    return regions;
+  }
+
   async getParent(id){
     const region = await Region.findById(id);
     const parent = await Region.findById(region.parent);
@@ -46,7 +56,6 @@ class RegionService {
     await region.save();
     return region;
   }
-
 
 }
 

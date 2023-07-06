@@ -34,6 +34,7 @@ class RegionService {
     return children;
   }
 
+
   async searchRegions(query){
     const regions = await Region.find({
       $or: [
@@ -59,4 +60,13 @@ class RegionService {
 
 }
 
+// IMPROVE: Add validations to ensure data integrity during region creation and update
+
+// IMPROVE: Handle errors and exceptions during CRUD operations for better error management
+
+// FEATURE: Integrate authentication and authorization mechanisms to secure sensitive operations
+
+// FEATURE: Add internationalization support to RegionService
+
 export default new RegionService();
+

@@ -17,28 +17,37 @@ class RegionService {
     return regions
   }
 
-  async updateRegion(){
-
+  async updateRegion(id, data){
+    const filter = { _id: id };
+    const update = { $set: data };
+    const region = await Region.findOneAndUpdate(filter, update, { new: true });
+    return region;
   }
 
-  async removeRegion(){
-
+  async removeRegion(id){
+    const region = await Region.findByIdAndDelete(id)
+    return region;
   }
 
-  async getChilds(){
-
+  async getChildren(id){
+    const children = await Region.find({ parent: id });
+    return children;
   }
 
-  async getParent(){
-
+  async getParent(id){
+    const region = await Region.findById(id);
+    const parent = await Region.findById(region.parent);
+    return parent;
   }
 
-  async moveRegion(){
-
+  async moveRegion(id, newParentId){
+    const region = await Region.findById(id);
+    region.parent = newParentId;
+    await region.save();
+    return region;
   }
 
 
-  // ...other methods go here...
 }
 
 export default new RegionService();

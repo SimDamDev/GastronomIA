@@ -10,6 +10,11 @@ const regionSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
+  parent: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Region',
+    required: false,
+  },
 });
 
 const Region = mongoose.model('Region', regionSchema);

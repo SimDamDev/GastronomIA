@@ -34,6 +34,11 @@ class RegionService {
     return children;
   }
 
+  async getTotalRegionCount(){
+    const count = await Region.countDocuments();
+    return count;
+  }
+
   async searchRegions(query){
     const regions = await Region.find({
       $or: [

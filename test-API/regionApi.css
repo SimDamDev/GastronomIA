@@ -1,0 +1,17 @@
+h1 { 
+    /*Après le titre, une ligne qui traverse la page */
+    border-bottom: 2px solid black;  
+    padding-bottom: 10px;
+}
+
+.region {
+    /* Une ligne entre chaque div de région mère */
+    border-bottom: 1px solid grey; 
+    padding: 20px 0;
+}
+
+.child {
+    /* Style des enfants */
+    font-size: 0.8em;
+    border-bottom: 1px solid black;
+}

@@ -13,4 +13,14 @@ router.get('/regions/:id/parent', RegionController.getParent);
 router.patch('/regions/:id/move', RegionController.moveRegion);
 
 
+// IMPACTS-OTHERS : Implement Route-level input validation to catch errors early.
+
+// IMPROVE: Add error handling for routes
+
+// FEATURE: Add authentication and authorization for routes
+
+// IMPROVE: Implement rate limiting to prevent abuse.
+
+// IMPACTS-OTHERS: Secure sensitive routes with proper authentication and permissions.
+
 export default router;

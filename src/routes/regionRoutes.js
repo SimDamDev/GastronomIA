@@ -1,16 +1,24 @@
-import fastify from 'fastify';
 import RegionController from '../controllers/regionController.js';
 
-const router = fastify();
+function routes(fastify, options, done) {
+    
+    fastify.post('/regions', RegionController.createRegion);
 
-router.post('/regions', RegionController.createRegion);
-router.get('/regions/:id', RegionController.getRegion);
-router.get('/regions', RegionController.getAllRegions);
-router.put('/regions/:id', RegionController.updateRegion);
-router.delete('/regions/:id', RegionController.removeRegion);
-router.get('/regions/:id/children', RegionController.getChildren);
-router.get('/regions/:id/parent', RegionController.getParent);
-router.patch('/regions/:id/move', RegionController.moveRegion);
+    fastify.get('/regions/:id', RegionController.getRegion);
 
+    fastify.get('/regions', RegionController.getAllRegions);
 
-export default router;
+    fastify.put('/regions/:id', RegionController.updateRegion);
+
+    fastify.delete('/regions/:id', RegionController.removeRegion);
+
+    fastify.get('/regions/:id/children', RegionController.getChildren);
+
+    fastify.get('/regions/:id/parent', RegionController.getParent);
+
+    fastify.patch('/regions/:id/move', RegionController.moveRegion);
+    
+    done();
+}
+
+export default routes;

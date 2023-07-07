@@ -1,12 +1,52 @@
 <body>
-    <h1>Test page</h1>
+    <h1>Page de Test pour API Région </h1>
 
-    <form id="addRegionForm">
-        <input type="text" id="regionName" placeholder="Nom de la région"><br>
-        <input type="submit" value="Ajouter nouvelle region">
+    <form id="createRegionForm">
+        <h2>Créer une nouvelle région</h2>
+        <input type="text" id="regionName" placeholder="Nom de la région">
+        <input type="text" id="regionParentId" placeholder="ID de la région parente">
+        <button type="submit">Créer</button>
+    </form>
+    
+    <form id="getRegionForm">
+        <h2>Obtenir une région avec son ID</h2>
+        <input type="text" id="regionId" placeholder="ID de la région">
+        <button type="submit">Obtenir</button>
+    </form>
+    
+    <form id="updateRegionForm">
+        <h2>Mettre à jour une région</h2>
+        <input type="text" id="updateRegionId" placeholder="ID de la région">
+        <input type="text" id="newRegionName" placeholder="Nouveau nom de la région">
+        <button type="submit">Mettre à jour</button>
     </form>
 
-    ...
+    <form id="deleteRegionForm">
+        <h2>Supprimer une région</h2>
+        <input type="text" id="deleteRegionId" placeholder="ID de la région">
+        <button type="submit">Supprimer</button>
+    </form>
 
-    <script src="regionAPI.js"></script> 
+    <form id="getChildrenForm">
+        <h2>Obtenir les régions enfants</h2>
+        <input type="text" id="parentId" placeholder="ID de la région parente">
+        <button type="submit">Obtenir enfants</button>
+    </form>
+
+    <form id="getParentForm">
+        <h2>Obtenir la région parente</h2>
+        <input type="text" id="childId" placeholder="ID de la région enfant">
+        <button type="submit">Obtenir parent</button>
+    </form>
+
+    <form id="moveRegionForm">
+        <h2>Déplacer une région</h2>
+        <input type="text" id="regionToMoveId" placeholder="ID de la région à déplacer">
+        <input type="text" id="newParentId" placeholder="ID de la nouvelle région parente">
+        <button type="submit">Déplacer</button>
+    </form>
+
+    <button id="getAllRegions">Obtenir toutes les régions</button>
+
+    <script src="testRegionApi.js"></script>
 </body>

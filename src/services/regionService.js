@@ -74,6 +74,8 @@ class RegionService {
 
 // IMPROVE: Add advanced pagination to 'getAllRegion' service, with the ability to sort and filter regions.
 
+// IMPACTS-OTHERS: Restrict certain actions (e.g., creating, deleting regions) to users with specific roles (e.g., admin). //CONTROLLER
+
 // IMPROVE: Replace hard-coded string values (like 'i' for case-insensitivity) with constants for better code readability and maintainability.
 
 export default new RegionService();

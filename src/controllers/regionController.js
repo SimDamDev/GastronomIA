@@ -43,4 +43,16 @@ class RegionController {
   }
 }
 
+// FEATURE: Add a method to filter regions by specific criteria (e.g., name, description) //SERVICE
+
+// IMPROVE: Implement try-catch error-handling to better manage exceptions.
+
+// FEATURE: Implement sorting for the 'getAllRegions' method. //SERVICE
+
+// IMPROVE: Implement input validation in controller methods.
+
+// IMPACTS-OTHERS: Implement pagination in the 'getAllRegions' method. //SERVICE
+
+// IMPACTS-OTHERS: Restrict certain actions (e.g., creating, deleting regions) to users with specific roles (e.g., admin). //SERVICE
+
 export default new RegionController();

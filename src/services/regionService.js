@@ -72,5 +72,9 @@ class RegionService {
 
 // FEATURE: Add internationalization support to RegionService
 
+// IMPROVE: Add advanced pagination to 'getAllRegion' service, with the ability to sort and filter regions.
+
+// IMPROVE: Replace hard-coded string values (like 'i' for case-insensitivity) with constants for better code readability and maintainability.
+
 export default new RegionService();
 

@@ -13,10 +13,8 @@ export async function refreshRegions(regionList) {
     // IMPACTS-OTHERS: This would also require changes in the API module
 
     // FEATURE: Consider adding a feature to sort regions alphabetically or by other criteria
-    const parentlessRegions = regions.filter(region => !region.parent);
+    // IMPACTS-OTHERS: This would require changes to the API module to implement sorting
 
-    console.log(regions);
-    // Consider regions with "root" parent or without a parent as parentless
     const parentlessRegions = regions.filter(region => !region.parent || region.parent === '000000000000000000000000');
     for (const region of parentlessRegions) {
         if (region.name!="root"){

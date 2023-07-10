@@ -1,12 +1,14 @@
-import { moveRegion, getAllRegions, updateRegion, deleteRegion} from './API.js';
+import { moveRegion, getAllRegions, updateRegion, deleteRegion, createRegion} from './API.js';
 import { refreshRegions } from './refreshRegions.js';
 import { createMoveForm, createUpdateForm, createDeleteForm, createCreateForm} from './utils.js';
 
-
+// FEATURE: Add feature to handle bulk move operations
 export async function moveAction(actionsDiv, regionList) {
     const regions = await getAllRegions();
 
-    // Create and append move form
+    
+    // IMPROVE: Add error handling in case of failure to fetch regions
+    // IMPACTS-OTHERS: Need to handle error on the API's end
     const moveForm = createMoveForm(async function(event) {
         event.preventDefault();
         const regionId = moveForm.querySelector('#region-id').value;
@@ -24,7 +26,8 @@ export async function moveAction(actionsDiv, regionList) {
         moveForm.querySelector('#region-id').value = '';
         moveForm.querySelector('#new-parent-id').value = '';
     
-        // Refresh the region list
+        // IMPROVE: Improve user feedback by providing a success message
+        // or updating the UI in some way after successful move
         await refreshRegions(regionList);
     
         // Hide the actions div
@@ -39,10 +42,12 @@ export async function moveAction(actionsDiv, regionList) {
     actionsDiv.style.display = 'block';
 }
 
+// FEATURE: Add feature to handle bulk update operations
 export async function updateAction(actionsDiv, regionList) {
     const regions = await getAllRegions();
 
-    // Create and append update form
+    // IMPROVE: Add error handling in case of failure to fetch regions
+    // IMPACTS-OTHERS: Need to handle error on the API's end
     const updateForm = await createUpdateForm(async function(event) {
         event.preventDefault();
         const regionId = updateForm.querySelector('#region-id').value;
@@ -55,7 +60,8 @@ export async function updateAction(actionsDiv, regionList) {
         updateForm.querySelector('#region-id').value = '';
         updateForm.querySelector('#new-region-name').value = '';
 
-        // Refresh the region list
+        // IMPROVE: Improve user feedback by providing a success message
+        // or updating the UI in some way after successful update
         await refreshRegions(regionList);
 
         // Hide the actions div
@@ -75,7 +81,8 @@ export async function updateAction(actionsDiv, regionList) {
 export async function deleteAction(actionsDiv, regionList) {
     const regions = await getAllRegions();
 
-    // Create and append delete form
+    // IMPROVE: Improve user feedback by providing a success message or updating the UI in some way after successful delete
+    // IMPACTS-OTHERS: Need to handle error on the API's end
     const deleteForm = createDeleteForm(async function(event) {
         event.preventDefault();
         const regionId = deleteForm.querySelector('#region-id').value;
@@ -108,12 +115,13 @@ export async function deleteAction(actionsDiv, regionList) {
     actionsDiv.style.display = 'block';
 }
 
-import { createRegion } from './API.js';  // assurez-vous d'avoir cette fonction dans votre module API
 
+// FEATURE: Add feature to handle bulk create operations
 export async function createAction(actionsDiv, regionList) {
     const regions = await getAllRegions();
 
-    // Create and append create form
+    // IMPROVE: Add error handling in case of failure to fetch regions
+    // IMPACTS-OTHERS: Need to handle error on the API's end
     const createForm = createCreateForm(async function(event) {
         event.preventDefault();
         const regionName = createForm.querySelector('#region-name').value;
@@ -126,6 +134,8 @@ export async function createAction(actionsDiv, regionList) {
         createForm.querySelector('#region-name').value = '';
         createForm.querySelector('#parent-region-id').value = '';
 
+        // IMPROVE: Improve user feedback by providing a success message 
+        //or updating the UI in some way after successful create
         // Refresh the region list
         await refreshRegions(regionList);
 

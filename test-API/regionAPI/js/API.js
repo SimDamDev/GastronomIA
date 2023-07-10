@@ -1,3 +1,6 @@
+//FEATURE: Consider adding a functionality to get a specific region details
+
+
 export async function getAllRegions() {
     const response = await fetch('/regions'); 
     const data = await response.json();
@@ -10,6 +13,7 @@ export async function getChildren(regionId) {
     return children;
 }
 
+// IMPROVE: Consider adding error handling for scenarios when the region does not exist
 export async function moveRegion(id, newParentId) {
     const response = await fetch(`/regions/${id}/move`, {
         method: 'PATCH',
@@ -24,6 +28,7 @@ export async function moveRegion(id, newParentId) {
     return data;
 }
 
+// IMPROVE: Implement validation to check if the updatedData is not empty or invalid
 export async function updateRegion(id, updatedData) {
     const response = await fetch(`/regions/${id}`, {
         method: 'PUT',
@@ -40,6 +45,7 @@ export async function updateRegion(id, updatedData) {
     return response.json();
 }
 
+// IMPROVE: Add a confirmation step before the region gets deleted to prevent accidental deletes
 export async function deleteRegion(id) {
     const response = await fetch(`/regions/${id}`, {
         method: 'DELETE',
@@ -55,6 +61,7 @@ export async function deleteRegion(id) {
     return response;  
 }
 
+// IMPROVE: Implement validation to check if the data provided is not empty or invalid
 export async function createRegion(data) {
     const response = await fetch('/regions', {
         method: 'POST',

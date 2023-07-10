@@ -1,3 +1,4 @@
+
 // index.js
 import { refreshRegions } from './js/refreshRegions.js';
 import { moveAction, updateAction, deleteAction, createAction } from './js/actions.js';
@@ -6,12 +7,15 @@ import { moveAction, updateAction, deleteAction, createAction } from './js/actio
 // IMPACTS-OTHERS: This might impact the loading order of other scripts, so it needs to be done carefully.
 // document.addEventListener('DOMContentLoaded', async function() {
 
+
 window.onload = async function() {
     const regionList = document.querySelector('#region-list');
     const actionsDiv = document.querySelector('#actions-panel');
 
     // FEATURE: Create a confirmation prompt before starting the move action.
     document.querySelector('#move-button').addEventListener('click', function() {
+    // Handle move button click
+    document.querySelector('#move-button').addEventListener('click', function() { // Ici j'ai changé l'ID dans le querySelector
         moveAction(actionsDiv, regionList);
     });
 

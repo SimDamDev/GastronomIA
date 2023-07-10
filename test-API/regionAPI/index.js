@@ -1,9 +1,5 @@
-
-// index.js
 import { refreshRegions } from './js/refreshRegions.js';
 import { moveAction, updateAction, deleteAction, createAction } from './js/actions.js';
-
-
 
 window.onload = async function() {
     const regionList = document.querySelector('#region-list');

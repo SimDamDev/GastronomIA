@@ -88,6 +88,8 @@ export async function deleteAction(actionsDiv, regionList) {
             alert("La suppression de la région a échoué");
         }
 
+        //IMPROVE consider to set children to parent's parent
+
         // Clear the form
         deleteForm.querySelector('#region-id').value = '';
 

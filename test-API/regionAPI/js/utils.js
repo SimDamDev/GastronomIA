@@ -1,5 +1,7 @@
 import { getChildren } from './API.js';
 
+//IMPROVE: Consider splitting this function into smaller, more manageable pieces 
+//for better code readability and maintainability.
 export function createLi(region) {
     const li = document.createElement('li');
     const arrowSpan = document.createElement('span');
@@ -13,12 +15,18 @@ export function createLi(region) {
     const childrenUl = document.createElement('ul');
     li.appendChild(childrenUl);
 
+    //FEATURE: Consider adding the ability to edit a region directly from this list item.
+    // This could be a button that opens a form.
+    //IMPACTS-OTHERS: This would impact the createUpdateForm function,
+    // which could be reused or adapted for this purpose.
+    
+
     // Ajouter un écouteur d'événements à l'élément li
     li.addEventListener('click', async function(event) {
         // Assurez-vous que l'élément cliqué est bien un span.arrow
         if (event.target.tagName === 'SPAN' && event.target.classList.contains('arrow')) {
             event.stopPropagation();
-            
+
             const li = event.target.parentNode;
             const arrowSpan = event.target;
             const childrenUl = li.querySelector('ul');
@@ -49,7 +57,10 @@ export function createLi(region) {
     return li;
 }
 
-// utils.js
+//IMPROVE: The following functions create forms that have similar structures and repeat similar code.
+// Consider refactoring to reduce code redundancy and improve maintainability.
+//IMPACTS-OTHERS: This would impact wherever these form creation functions are being called.
+
 
 export function createMoveForm(submitHandler, regions) {
     // Create form elements
@@ -203,3 +214,7 @@ export function createCreateForm(submitHandler, regions) {
     return form;
 }
 
+//FEATURE: Consider adding more options to this form for greater control over region 
+//creation. For example, an input for a "description" or "notes" about the region.
+//IMPACTS-OTHERS: This would impact the server-side handling of region creation, 
+//as it would need to accept and process the additional data.

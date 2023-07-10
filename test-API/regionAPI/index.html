@@ -3,22 +3,35 @@
 <head>
     <title>Test API Region</title>
     <link rel="stylesheet" href="styles.css">
+    <!--IMPROVE: Consider adding viewport meta tag for responsive design. 
+    Example: <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
 </head>
 <body>
     <h1>Page de Test pour API Région </h1>
 
+    <!--FEATURE: Consider implementing a modal or separate page for each operation for better user experience-->
     <button id="move-button">Move</button>
     <button id="update-button">Update</button>
     <button id="delete-region">Delete</button>
     <button id="create-button">Créer</button>
-        <div id="actions-panel">
-  <!-- Le contenu du panneau d'actions sera ajouté ici par JavaScript -->
-        </div>
+
+    <div id="actions-panel">
+        <!-- The content of the action panel will be added here by JavaScript -->
+        <!--IMPROVE: Consider using more semantic HTML5 elements like <section>, <article> for better accessibility and SEO-->
+        <!--IMPACT-OTHERS: If semantic HTML5 elements are used, CSS and JS selectors may need to be updated accordingly-->
+    </div>
 
     <h1>Régions</h1>
+
+    <!--IMPROVE: Pagination or infinite scrolling could be added if the list gets too long for better UX -->
     <ul id="region-list">
-        <!-- Les régions seront ajoutées ici par JavaScript -->
+        <!-- Regions will be added here by JavaScript -->
     </ul>
+    
     <script type="module" src="index.js"></script>
+
+    <!--IMPROVE: Consider using async defer attributes for script loading performance 
+    Example: <script async defer type="module" src="index.js"></script>-->
+    <!--IMPACT-OTHERS: If async defer attributes are used, scripts may need to be updated to handle potential load timing issues-->
 </body>
 </html>

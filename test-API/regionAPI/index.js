@@ -5,6 +5,7 @@ window.onload = async function() {
     const regionList = document.querySelector('#region-list');
     const actionsDiv = document.querySelector('#actions-panel');
 
+
     // Handle move button click
     document.querySelector('#move-button').addEventListener('click', function() { // Ici j'ai changé l'ID dans le querySelector
         moveAction(actionsDiv, regionList);
@@ -25,3 +26,5 @@ window.onload = async function() {
     // Refresh the region list
     await refreshRegions(regionList);
 };
+
+

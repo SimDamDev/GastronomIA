@@ -72,7 +72,7 @@ export function createMoveForm(submitHandler, regions) {
     // Add a default option to newParentIdSelect for root
     const defaultOption = document.createElement('option');
     defaultOption.textContent = 'root';
-    defaultOption.value = '';
+    defaultOption.value = '000000000000000000000000';
     newParentIdSelect.appendChild(defaultOption);
 
     // Fill the select elements with options for each region
@@ -185,8 +185,8 @@ export function createCreateForm(submitHandler, regions) {
 
     // Create a default option for 'none'
     const defaultOption = document.createElement('option');
-    defaultOption.textContent = 'None';
-    defaultOption.value = '';
+    defaultOption.textContent = 'root';
+    defaultOption.value = '000000000000000000000000';
     regionSelect.appendChild(defaultOption);
 
     // Populate parent region select

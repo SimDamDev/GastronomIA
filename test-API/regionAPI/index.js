@@ -11,7 +11,9 @@ window.onload = async function() {
     const actionsDiv = document.querySelector('#actions-panel');
 
     // FEATURE: Create a confirmation prompt before starting the move action.
-    document.querySelector('#move-button').addEventListener('click', function() {
+
+    // Handle move button click
+    document.querySelector('#move-button').addEventListener('click', function() { 
         moveAction(actionsDiv, regionList);
     });
 
@@ -35,3 +37,5 @@ window.onload = async function() {
     // IMPACT-OTHERS: This might impact the UI design and layout, so it needs to be coordinated with the front-end team.
     await refreshRegions(regionList);
 };
+
+

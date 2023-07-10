@@ -17,6 +17,8 @@ export function createLi(region) {
     li.addEventListener('click', async function(event) {
         // Assurez-vous que l'élément cliqué est bien un span.arrow
         if (event.target.tagName === 'SPAN' && event.target.classList.contains('arrow')) {
+            event.stopPropagation();
+            
             const li = event.target.parentNode;
             const arrowSpan = event.target;
             const childrenUl = li.querySelector('ul');

@@ -1,4 +1,3 @@
-
 // index.js
 import { refreshRegions } from './js/refreshRegions.js';
 import { moveAction, updateAction, deleteAction, createAction } from './js/actions.js';
@@ -7,15 +6,12 @@ import { moveAction, updateAction, deleteAction, createAction } from './js/actio
 // IMPACTS-OTHERS: This might impact the loading order of other scripts, so it needs to be done carefully.
 // document.addEventListener('DOMContentLoaded', async function() {
 
-
 window.onload = async function() {
     const regionList = document.querySelector('#region-list');
     const actionsDiv = document.querySelector('#actions-panel');
 
     // FEATURE: Create a confirmation prompt before starting the move action.
     document.querySelector('#move-button').addEventListener('click', function() {
-    // Handle move button click
-    document.querySelector('#move-button').addEventListener('click', function() { // Ici j'ai changé l'ID dans le querySelector
         moveAction(actionsDiv, regionList);
     });
 
@@ -36,6 +32,6 @@ window.onload = async function() {
 
     // Refresh the region list
     // IMPROVE: Implement a loading spinner or similar to indicate that regions are being loaded.
-    // IMPACTS-OTHERS: This might impact the UI design and layout, so it needs to be coordinated with the front-end team.
+    // IMPACT-OTHERS: This might impact the UI design and layout, so it needs to be coordinated with the front-end team.
     await refreshRegions(regionList);
 };

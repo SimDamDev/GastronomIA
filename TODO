@@ -3,3 +3,9 @@
 //TODO add auto deploy somehow
 
 //TODO add units in database (controller, model, service, routes)
+
+//TODO remove root region from database in select populate
+
+//TODO consider to modify region adding climate and average temperature in database
+
+//TODO consider to add logging of activity in database

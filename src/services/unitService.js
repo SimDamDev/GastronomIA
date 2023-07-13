@@ -67,6 +67,7 @@ class UnitService {
     async getUnitsByBase(baseUnit){
         return Unit.find({ baseUnit: baseUnit });
     }
-    
 
 }
+
+export default new UnitService();

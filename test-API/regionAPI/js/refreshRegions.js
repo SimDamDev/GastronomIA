@@ -1,6 +1,5 @@
-// refreshRegions.js
 import { getAllRegions } from './API.js';
-import { createLi } from './utils.js'; // Import from 'utils.js' not 'API.js'
+import { createLi } from './utils.js'; 
 
 export async function refreshRegions(regionList) {
     // Clear the region list

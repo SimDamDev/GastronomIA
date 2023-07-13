@@ -4,11 +4,12 @@ export async function getAllRegions() {
     return data;
 }
 
-export async function getChildren(regionId) {
-    const response = await fetch(`/regions/${regionId}/children`);
-    const children = await response.json();
-    return children;
+export async function getRegion(id) {
+    const response = await fetch(`/regions/${id}`);
+    const data = await response.json();
+    return data;
 }
+
 
 export async function moveRegion(id, newParentId) {
     const response = await fetch(`/regions/${id}/move`, {
@@ -69,5 +70,11 @@ export async function createRegion(data) {
     }
 
     return response.json();
+}
+
+export async function getChildren(regionId) {
+    const response = await fetch(`/regions/${regionId}/children`);
+    const children = await response.json();
+    return children;
 }
 

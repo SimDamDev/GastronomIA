@@ -15,7 +15,7 @@ window.onload = async function() {
         updateAction(actionsDiv, regionList);
     });
 
-    document.querySelector('#delete-region').addEventListener('click', function() {
+    document.querySelector('#delete-button').addEventListener('click', function() {
         deleteAction(actionsDiv, regionList);
     });
 

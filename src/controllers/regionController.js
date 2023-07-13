@@ -27,6 +27,16 @@ class RegionController {
         reply.code(204).send();
     }
 
+    async getTotalRegionCount(req, reply) {
+        const count = await RegionService.getTotalRegionCount();
+        reply.send({ count });
+    }
+
+    async searchRegions(req, reply) {
+        const regions = await RegionService.searchRegions(req.query.q);
+        reply.send(regions);
+    }
+
     async getChildren(req, reply) {
         const children = await RegionService.getChildren(req.params.id);
         reply.send(children);

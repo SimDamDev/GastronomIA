@@ -1,6 +1,6 @@
 // Import necessary modules
 import mongoose from 'mongoose';
-import config from '../../config/config.js';
+import {config} from '../../config/config.js';
 import { unitType } from '../../config/constants.js'; 
 
 const unitSchema = new mongoose.Schema({
@@ -16,8 +16,8 @@ const unitSchema = new mongoose.Schema({
         type: String,
         enum: Object.values(unitType),
         required: false,
-      },
-      conversionFactor: { // Conversion factor to base unit
+    },
+    conversionFactor: { // Conversion factor to base unit
       type: Number,
       required: false,
     },

@@ -1,4 +1,4 @@
-import UnitController from '../controllers/unitController';
+import UnitController from '../controllers/unitController.js';
 
 function routes(fastify, options, done) {
 

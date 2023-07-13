@@ -29,4 +29,18 @@ function routes(fastify, options, done) {
     done();
 }
 
+// IMPROVE: Add authentication middleware to routes that should be protected
+
+    // FEATURE: Add rate limiting to prevent abuse of the API
+
+    // IMPROVE: Use a route prefix or versioning to help manage future changes
+
+    // IMPACTS-OTHERS: Ensure routes that modify data (POST, PUT, PATCH, DELETE) have proper authorization checks
+
+    // FEATURE: Use HTTP caching where applicable to improve performance
+
+    // IMPROVE: Organize routes into separate files based on resource type for better maintainability
+
+    // FEATURE: Add more robust error handling and return appropriate HTTP status codes
+
 export default routes;

@@ -63,4 +63,20 @@ class UnitController {
     }
 }
 
+// IMPROVE: Add input validation to prevent invalid data from being sent to the service
+  
+    // IMPROVE: Implement error handling to provide more informative error messages to the client
+
+    // FEATURE: Implement rate limiting to prevent abuse of the API
+
+    // IMPROVE: Handle pagination defaults and max per page limit in 'getAllUnits' to prevent potential misuse
+
+    // FEATURE: Implement caching to improve performance of frequently accessed data
+
+    // IMPACTS-OTHERS: Restrict certain routes (e.g., 'createUnit', 'removeUnit') to users with specific roles (e.g., admin)
+
+    // IMPROVE: Ensure that 'searchUnits' properly escapes the search query to prevent Regular Expression Denial of Service (ReDoS)
+
+    // FEATURE: Implement HATEOAS (Hypermedia As The Engine Of Application State) to make the API self-descriptive and easier to navigate
+
 export default new UnitController();

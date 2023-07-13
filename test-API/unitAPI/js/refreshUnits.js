@@ -5,11 +5,11 @@ export async function refreshUnits(unitList) {
     // Clear the unit list
     unitList.innerHTML = '';
 
-    // Fetch all units and create li elements for parentless or root ones
     const units = await getAllUnits();
     console.log(units);
 
-    const li = createLi(units);
-    unitList.appendChild(li);
-
+    for (let i = 0; i < units.length; i++) {
+        const li = createLi(units[i]);
+        unitList.appendChild(li);
+    }
 }

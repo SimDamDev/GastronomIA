@@ -1,4 +1,4 @@
-import { moveRegion, getAllRegions, updateRegion, deleteRegion} from './API.js';
+import { moveRegion, getAllRegions, updateRegion, deleteRegion, createRegion} from './API.js';
 import { refreshRegions } from './refreshRegions.js';
 import { createMoveForm, createUpdateForm, createDeleteForm, createCreateForm} from './utils.js';
 
@@ -106,7 +106,7 @@ export async function deleteAction(actionsDiv, regionList) {
     actionsDiv.style.display = 'block';
 }
 
-import { createRegion } from './API.js';  // assurez-vous d'avoir cette fonction dans votre module API
+
 
 export async function createAction(actionsDiv, regionList) {
     const regions = await getAllRegions();

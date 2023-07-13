@@ -9,3 +9,7 @@
 //TODO consider to modify region adding climate and average temperature in database
 
 //TODO consider to add logging of activity in database
+
+//TODO getAllRegion page and per page params, attention actually work but undefined is not recomanded for skip and limit
+
+//TODO getAllRegion page and per page params, attention actually work but undefined is not recomanded for skip and limit

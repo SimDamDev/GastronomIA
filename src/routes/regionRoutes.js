@@ -12,6 +12,10 @@ function routes(fastify, options, done) {
 
     fastify.delete('/regions/:id', RegionController.removeRegion);
 
+    fastify.get('/regions/count', RegionController.getTotalRegionCount);
+
+    fastify.get('/regions/search', RegionController.searchRegions);
+
     fastify.get('/regions/:id/children', RegionController.getChildren);
 
     fastify.get('/regions/:id/parent', RegionController.getParent);

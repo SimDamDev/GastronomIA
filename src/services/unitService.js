@@ -83,3 +83,5 @@ class UnitService {
    // FEATURE: Add functionality to convert units
     
 }
+
+export default new UnitService();

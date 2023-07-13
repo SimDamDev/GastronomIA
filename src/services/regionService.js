@@ -29,11 +29,6 @@ class RegionService {
     return region;
   }
 
-  async getChildren(id){
-    const children = await Region.find({ parent: id });
-    return children;
-  }
-
   async getTotalRegionCount(){
     const count = await Region.countDocuments();
     return count;
@@ -47,6 +42,11 @@ class RegionService {
       ]
     });
     return regions;
+  }
+
+  async getChildren(id){
+    const children = await Region.find({ parent: id });
+    return children;
   }
 
   async getParent(id){

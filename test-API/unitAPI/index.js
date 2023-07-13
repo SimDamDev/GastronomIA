@@ -1,5 +1,5 @@
-import {refreshUnits} from './js/refreshUnits';
-import {updateAction, deleteAction, createAction, filterAction} from './js/actions';
+import {refreshUnits} from './js/refreshUnits.js';
+import {updateAction, deleteAction, createAction, filterAction} from './js/actions.js';
 
 window.onload = async function() {
     const unitList = document.querySelector('#unit-list');
@@ -9,7 +9,7 @@ window.onload = async function() {
         updateAction(actionsDiv, unitList);
     });
 
-    document.querySelector('#delete-unit').addEventListener('click', function() {
+    document.querySelector('#delete-button').addEventListener('click', function() {
         deleteAction(actionsDiv, unitList);
     });
 

@@ -57,3 +57,8 @@ export async function createUnit(data) {
     return response.json();
 }
 
+export async function getConstants(){
+    const response = await fetch('/constants');
+    const data = await response.json();
+    return data.unitType;
+}

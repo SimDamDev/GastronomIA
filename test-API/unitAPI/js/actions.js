@@ -19,6 +19,7 @@ export async function createAction(actionsDiv, unitList){
 
         if (type.value == Solid && baseUnit.value != "gramme"){
             alert("vous etes sure de vouloir attribuer" + baseUnit.value + " a cette unité de type Solid" )
+            return
         } 
 
         await createUnit({name: unitName, abbreviation: unitabbreviation, type: type, conversionFactor: conversionFactor, baseUnit: baseUnit, icon: icon, isActive: isActive});

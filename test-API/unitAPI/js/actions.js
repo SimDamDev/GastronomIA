@@ -13,7 +13,13 @@ export async function createAction(actionsDiv, unitList){
         const type = createForm.querySelector('#type').value;
         const conversionFactor = createForm.querySelector('#conversionFactor').value;
         const baseUnit = createForm.querySelector('#baseUnit').value;
-        const icon = createForm.querySelector('#icon').value;
+        const icon = createForm.querySelector('#icon').value || "defaultIcon"
+        //TODO gerer le default icon coté serveur
+        const isActive= true
+
+        if (type.value == Solid && baseUnit.value != "gramme"){
+            alert("vous etes sure de vouloir attribuer" + baseUnit.value + " a cette unité de type Solid" )
+        } 
 
         await createUnit({name: unitName, abbreviation: unitabbreviation, type: type, conversionFactor: conversionFactor, baseUnit: baseUnit, icon: icon, isActive: isActive});
 

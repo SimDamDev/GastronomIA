@@ -21,17 +21,19 @@ export async function createCreateForm(submitHandler) {
     const unitabbreviationInput = document.createElement('input');
     const typeInput = document.createElement('select');
     const conversionFactorInput = document.createElement('input');
-    const baseUnitInput = document.createElement('input');
+    const baseUnitInput = document.createElement('select');
     const iconInput = document.createElement('input');
-    const isActiveInput = document.createElement('input');
     const submitButton = document.createElement('button');
 
-    const unitType = await getConstants();
+    const constants = await getConstants()
+    const unitType = constants.unitType;
+    const baseUnit = constants.baseUnit
+
+
 
     unitNameInput.placeholder = 'Nom de l\'unité';
     unitabbreviationInput.placeholder = 'Abréviation de l\'unité';
     conversionFactorInput.placeholder = 'Facteur de conversion';
-    baseUnitInput.placeholder = 'Unité de base';
     iconInput.placeholder = 'Icone';
 
     unitType.forEach(type => {
@@ -39,6 +41,13 @@ export async function createCreateForm(submitHandler) {
         option.value = type;
         option.text = type;
         typeInput.appendChild(option);
+    });
+
+    baseUnit.forEach(baseUnit => {
+        const option = document.createElement('option');
+        option.value = baseUnit;
+        option.text = baseUnit;
+        baseUnitInput.appendChild(option)
     });
 
     unitNameInput.id = 'unit-name';

@@ -26,7 +26,7 @@ export async function createCreateForm(submitHandler) {
     const submitButton = document.createElement('button');
 
     const constants = await getConstants()
-    log( constants)
+    console.log( constants)
     const unitType = constants.unitType;
     const baseUnit = constants.baseUnit
 

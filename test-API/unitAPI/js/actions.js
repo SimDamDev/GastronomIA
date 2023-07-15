@@ -17,8 +17,9 @@ export async function createAction(actionsDiv, unitList){
         //TODO gerer le default icon coté serveur
         const isActive= true
 
-        if (type.value == Solid && baseUnit.value != "gramme"){
+        if (type.value == "Solid" && baseUnit.value != "gramme"){
             alert("vous etes sure de vouloir attribuer" + baseUnit.value + " a cette unité de type Solid" )
+            return
         } 
 
         await createUnit({name: unitName, abbreviation: unitabbreviation, type: type, conversionFactor: conversionFactor, baseUnit: baseUnit, icon: icon, isActive: isActive});

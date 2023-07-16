@@ -29,11 +29,9 @@ class RegionService {
 
 
   async updateRegion(id, data) {
-    const region = await Region.findById(id);
-    if (!region) {
-      throw new Error(`No such region with id ${id}`);
-    }
-    const updatedRegion = await Region.findByIdAndUpdate(id, data, { new: true });
+    const filter = { _id: id };
+    const update = { $set: data };
+    const updatedRegion = await Region.findOneAndUpdate(filter, update, { new: true });
     return updatedRegion;
   }
 

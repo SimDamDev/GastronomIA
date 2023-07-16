@@ -16,7 +16,17 @@ function routes(fastify, options, done) {
         },
     }, RegionController.createRegion);
 
-    fastify.get('/regions/:id', RegionController.getRegion);
+    fastify.get('/regions/:id', {
+        schema: {
+            params: {
+                type: 'object',
+                required: ['id'],
+                properties: {
+                    id: { type: 'string' },
+                },
+            },
+        },
+    }, RegionController.getRegion);
 
     fastify.get('/regions', RegionController.getAllRegions);
 

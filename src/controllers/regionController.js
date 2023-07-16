@@ -2,6 +2,11 @@ import RegionService from '../services/regionService.js';
 
 class RegionController {
     async createRegion(req, reply) {
+        const { name } = req.body;
+        if (!name) {
+            reply.code(400).send({ error: 'Region name is required' });
+            return;
+        }
         const region = await RegionService.createRegion(req.body);
         reply.code(201).send(region);
     }

@@ -7,6 +7,7 @@ const unitSchema = new mongoose.Schema({
     name: {
       type: String,
       required: true,
+      unique: true,
     },
     abbreviation: {
       type: String,
@@ -20,6 +21,10 @@ const unitSchema = new mongoose.Schema({
     conversionFactor: { // Conversion factor to base unit
       type: Number,
       required: false,
+      validate: {
+        validator: Number.isPositive,
+        message: 'Conversion factor must be a positive number'
+      },
     },
     baseUnit: { // Base unit g or mL
         type: String,

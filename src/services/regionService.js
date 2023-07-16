@@ -39,12 +39,11 @@ class RegionService {
 
 
   async removeRegion(id) {
-  const region = await Region.findById(id);
-  if (!region) {
-    throw new Error(`No such region with id ${id}`);
-  }
-  const removedRegion = await Region.findByIdAndRemove(id);
-  return removedRegion;
+    const removedRegion = await Region.findByIdAndDelete(id);
+    if (!removedRegion) {
+      throw new Error(`No such region with id ${id}`);
+    }
+    return removedRegion;
   }
 
   async getTotalRegionCount(){
@@ -74,9 +73,9 @@ class RegionService {
   }
 
   async moveRegion(id, newParentId){
-    const region = await Region.findById(id);
-    region.parent = newParentId;
-    await region.save();
+    const filter = { _id: id };
+    const update = { $set: { parent: newParentId }};
+    const region = await Region.findOneAndUpdate(filter, update, { new: true });
     return region;
   }
 

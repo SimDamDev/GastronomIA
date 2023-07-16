@@ -16,11 +16,14 @@ class UnitController {
     }
 
     async getAllUnits(req, reply) {
-        const { page, perPage } = req.query;
-        const units = await UnitService.getAllUnit(page, perPage);
-        reply.send(units);
-    }
-
+        try {
+            const { page, perPage } = req.query;
+            const units = await UnitService.getAllUnit(page, perPage); 
+            reply.send(units);
+        } catch (err) {
+            reply.send(err);
+        }
+    },
     async updateUnit(req, reply) {
         try {
             const unit = await UnitService.updateUnit(req.params.id, req.body);
@@ -38,11 +41,14 @@ class UnitController {
             reply.code(400).send({ error: error.message });
         }
     }
-
     async getTotalUnitCount(req, reply) {
-        const count = await UnitService.getTotalUnitCount();
-        reply.send({ count });
-    }
+        try {
+            const count = await UnitService.getTotalUnitCount();       
+            reply.send({ count });
+        } catch (err) {
+            reply.send(err);
+        }
+    },
 
     async searchUnits(req, reply) {
         const units = await UnitService.searchUnits(req.query.q);

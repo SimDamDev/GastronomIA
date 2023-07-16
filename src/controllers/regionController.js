@@ -12,9 +12,13 @@ class RegionController {
     }
 
     async getAllRegions(req, reply) {
-        const { page, perPage } = req.query;
-        const regions = await RegionService.getAllRegion(page, perPage);
-        reply.send(regions);
+        try {
+            const { page, perPage } = req.query;
+            const regions = await RegionService.getAllRegion(page, perPage);
+            reply.send(regions);
+        } catch (err) {
+            reply.send(err);
+        }
     }
 
     async updateRegion(req, reply) {
@@ -28,8 +32,12 @@ class RegionController {
     }
 
     async getTotalRegionCount(req, reply) {
-        const count = await RegionService.getTotalRegionCount();
-        reply.send({ count });
+        try {
+            const count = await RegionService.getTotalRegionCount();   
+            reply.send({ count });
+        } catch (err) {
+            reply.send(err);
+        }
     }
 
     async searchRegions(req, reply) {

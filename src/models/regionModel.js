@@ -14,6 +14,13 @@ const regionSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Region',
     required: false,
+    validate: {
+      validator: async function(v) {
+        if (v === null) return true;
+        return await Region.findById(v) !== null;
+      },
+      message: props => `No such region with id ${props.value}`
+    },
   },
 });
 

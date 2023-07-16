@@ -5,14 +5,7 @@ import UnitController from '../controllers/unitController.js';
 function routes(fastify, options, done) {
 
     // GET routes
-    // Get a unit by id
-    fastify.get('/units/:id', UnitController.getUnit);
-    // Get all units
-    fastify.get('/units', UnitController.getAllUnits);
-    // Get total count of units
-    fastify.get('/units/count', UnitController.getTotalUnitCount);
-    // Search units
-    // Get a unit by id
+    // Get a unit by id with validation
     fastify.get('/units/:id', {
         schema: {
             params: {
@@ -24,6 +17,10 @@ function routes(fastify, options, done) {
             },
         },
     }, UnitController.getUnit);
+    // Get all units
+    fastify.get('/units', UnitController.getAllUnits);
+    // Get total count of units
+    fastify.get('/units/count', UnitController.getTotalUnitCount);
     // Get units by status
     fastify.get('/units/status/:status', {
         schema: {

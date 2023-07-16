@@ -16,8 +16,8 @@ export default async function staticFiles(fastify, options) {
     root: publicPath,
     prefix: '/', 
     errorHandler: (error, request, reply) => {
-      console.error(`Error serving static file: ${error}`);
-      reply.status(500).send('An error occurred while serving the static file.');
+      console.error(`Error serving static file at ${request.url}: ${error}`);
+      reply.status(500).send(`An error occurred while serving the static file at ${request.url}.`);
     }
   });
 
@@ -27,8 +27,8 @@ export default async function staticFiles(fastify, options) {
     prefix: '/test-API/',
     decorateReply: false,
     errorHandler: (error, request, reply) => {
-      console.error(`Error serving static file: ${error}`);
-      reply.status(500).send('An error occurred while serving the static file.');
+      console.error(`Error serving static file at ${request.url}: ${error}`);
+      reply.status(500).send(`An error occurred while serving the static file at ${request.url}.`);
     }
   });  
 }

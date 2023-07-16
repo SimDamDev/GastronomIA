@@ -15,12 +15,20 @@ export default async function staticFiles(fastify, options) {
   fastify.register(fastifyStatic, {
     root: publicPath,
     prefix: '/', 
+    errorHandler: (error, request, reply) => {
+      console.error(`Error serving static file: ${error}`);
+      reply.status(500).send('An error occurred while serving the static file.');
+    }
   });
 
   // Serve static files from 'test-API'
   fastify.register(fastifyStatic, {
     root: testAPIPath,
     prefix: '/test-API/',
-    decorateReply: false
+    decorateReply: false,
+    errorHandler: (error, request, reply) => {
+      console.error(`Error serving static file: ${error}`);
+      reply.status(500).send('An error occurred while serving the static file.');
+    }
   });  
 }

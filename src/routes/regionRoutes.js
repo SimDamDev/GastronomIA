@@ -2,7 +2,19 @@ import RegionController from '../controllers/regionController.js';
 
 function routes(fastify, options, done) {
     
-    fastify.post('/regions', RegionController.createRegion);
+    fastify.post('/regions', {
+        schema: {
+            body: {
+                type: 'object',
+                required: ['name'],
+                properties: {
+                    name: { type: 'string' },
+                    description: { type: 'string' },
+                    parent: { type: 'string' },
+                },
+            },
+        },
+    }, RegionController.createRegion);
 
     fastify.get('/regions/:id', RegionController.getRegion);
 

@@ -2,7 +2,8 @@
 import fastify from 'fastify';
 import staticFiles from './staticFiles.js';
 import routes from './routes/indexRoutes.js';
-import {dbConnect} from './services/db.js'
+import {dbConnect} from './services/db.js';
+import {errorHandler} from './utils/errorHandler.js';
 import {errorHandler} from './utils/errorHandler.js';
 
 const app = fastify();

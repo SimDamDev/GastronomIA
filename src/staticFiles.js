@@ -2,6 +2,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import fastifyStatic from '@fastify/static';
+import {errorHandler} from './utils/errorHandler.js';
 
 // Define the directory name
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -15,10 +16,7 @@ export default async function staticFiles(fastify, options) {
   fastify.register(fastifyStatic, {
     root: publicPath,
     prefix: '/', 
-    errorHandler: (error, request, reply) => {
-      console.error(`Error serving static file at ${request.url}: ${error}`);
-      reply.status(500).send(`An error occurred while serving the static file at ${request.url}.`);
-    }
+    errorHandler: errorHandler
   });
 
   // Serve static files from 'test-API'
@@ -26,9 +24,6 @@ export default async function staticFiles(fastify, options) {
     root: testAPIPath,
     prefix: '/test-API/',
     decorateReply: false,
-    errorHandler: (error, request, reply) => {
-      console.error(`Error serving static file at ${request.url}: ${error}`);
-      reply.status(500).send(`An error occurred while serving the static file at ${request.url}.`);
-    }
+    errorHandler: errorHandler
   });  
 }

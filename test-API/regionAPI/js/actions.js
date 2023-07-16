@@ -3,42 +3,41 @@ import { refreshRegions } from './refreshRegions.js';
 import { createMoveForm, createUpdateForm, createDeleteForm, createCreateForm} from './utils.js';
 
 
-export async function moveAction(actionsDiv, regionList) {
-    const regions = await getAllRegions();
+    export async function moveAction(actionsDiv, regionList) {
+        const regions = await getAllRegions();
 
-    // Create and append move form
-    const moveForm = createMoveForm(async function(event) {
-        event.preventDefault();
-        const regionId = moveForm.querySelector('#region-id').value;
-        const newParentId = moveForm.querySelector('#new-parent-id').value;
-    
-        if (regionId === newParentId) {
-            alert("Une région ne peut pas être son propre parent. Veuillez choisir une autre région.");
-            return;
-        }
-    
-        // Make the API request to move the region
-        await moveRegion(regionId, newParentId);
-    
-        // Clear the form
-        moveForm.querySelector('#region-id').value = '';
-        moveForm.querySelector('#new-parent-id').value = '';
-    
-        // Refresh the region list
-        await refreshRegions(regionList);
-    
-        // Hide the actions div
-        actionsDiv.style.display = 'none';
-    }, regions);
-    
-    // Empty the actions div and append the move form
-    actionsDiv.innerHTML = '';
-    actionsDiv.appendChild(moveForm);
+        // Create and append move form
+        const moveForm = createMoveForm(async function(event) {
+            event.preventDefault();
+            const regionId = moveForm.querySelector('#region-id').value;
+            const newParentId = moveForm.querySelector('#new-parent-id').value;
 
-    // Show the actions div
-    actionsDiv.style.display = 'block';
-}
+            if (regionId === newParentId) {
+                alert("Une région ne peut pas être son propre parent. Veuillez choisir une autre région.");
+                return;
+            }
 
+            // Make the API request to move the region
+            await moveRegion(regionId, newParentId);
+
+            // Clear the form
+            moveForm.querySelector('#region-id').value = '';
+            moveForm.querySelector('#new-parent-id').value = '';
+
+            // Refresh the region list
+            await refreshRegions(regionList);
+
+            // Hide the actions div
+            actionsDiv.style.display = 'none';
+        }, regions);
+
+        // Empty the actions div and append the move form
+        actionsDiv.innerHTML = '';
+        actionsDiv.appendChild(moveForm);
+
+        // Show the actions div
+        actionsDiv.style.display = 'block';
+    }
 export async function updateAction(actionsDiv, regionList) {
     const regions = await getAllRegions();
 

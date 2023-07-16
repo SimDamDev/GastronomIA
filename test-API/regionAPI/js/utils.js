@@ -1,51 +1,53 @@
 import { getChildren } from './API.js';
 
-export function createLi(region) {
-    const li = document.createElement('li');
-    const arrowSpan = document.createElement('span');
-    arrowSpan.textContent = "►";
-    arrowSpan.classList.add('arrow');
-    li.appendChild(arrowSpan);
-    li.appendChild(document.createTextNode(region.name));
-    li.dataset.id = region._id; // Ajouter l'id de la région comme attribut de données pour pouvoir la récupérer plus tard
+    export function createLi(region) {
+        const li = document.createElement('li');
+        const arrowSpan = document.createElement('span');
+        arrowSpan.textContent = "►";
+        arrowSpan.classList.add('arrow');
+        li.appendChild(arrowSpan);
+        li.appendChild(document.createTextNode(region.name));
+        li.dataset.id = region._id; // Ajouter l'id de la région comme attribut de données pour pouvoir la récupérer plus tard
 
-    // Créer un nouvel élément ul pour les enfants et l'ajouter à la liste
-    const childrenUl = document.createElement('ul');
-    li.appendChild(childrenUl);
+        // Créer un nouvel élément ul pour les enfants et l'ajouter à la liste
+        const childrenUl = document.createElement('ul');
+        li.appendChild(childrenUl);
 
-    // Ajouter un écouteur d'événements à l'élément li
-    li.addEventListener('click', async function(event) {
-        // Assurez-vous que l'élément cliqué est bien un span.arrow
-        if (event.target.tagName === 'SPAN' && event.target.classList.contains('arrow')) {
-            event.stopPropagation();
-            
-            const li = event.target.parentNode;
-            const arrowSpan = event.target;
-            const childrenUl = li.querySelector('ul');
+        // Ajouter un écouteur d'événements à l'élément li
+        li.addEventListener('click', async function(event) {
+            // Assurez-vous que l'élément cliqué est bien un span.arrow
+            if (event.target.tagName === 'SPAN' && event.target.classList.contains('arrow')) {
+                event.stopPropagation();
 
-            // Si l'élément li a déjà été étendu, le réduire et supprimer tous les enfants li
-            if (li.classList.contains('expanded')) {
-                li.classList.remove('expanded');
-                arrowSpan.textContent = '►';
-                while (childrenUl.firstChild) {
-                    childrenUl.removeChild(childrenUl.firstChild);
-                }
-            } else {
-                li.classList.add('expanded');
-                arrowSpan.textContent = '▼';
+                const li = event.target.parentNode;
+                const arrowSpan = event.target;
+                const childrenUl = li.querySelector('ul');
 
-                // Récupérer les enfants de la région
-                const children = await getChildren(li.dataset.id);
+                // Si l'élément li a déjà été étendu, le réduire et supprimer tous les enfants li
+                if (li.classList.contains('expanded')) {
+                    li.classList.remove('expanded');
+                    arrowSpan.textContent = '►';
+                    while (childrenUl.firstChild) {
+                        childrenUl.removeChild(childrenUl.firstChild);
+                    }
+                } else {
+                    li.classList.add('expanded');
+                    arrowSpan.textContent = '▼';
 
-                // Ajouter les enfants à la liste
-                for (const child of children) {
-                    const childLi = createLi(child);
-                    childrenUl.appendChild(childLi);
+                    // Récupérer les enfants de la région
+                    const children = await getChildren(li.dataset.id);
+
+                    // Ajouter les enfants à la liste
+                    for (const child of children) {
+                        const childLi = createLi(child);
+                        childrenUl.appendChild(childLi);
+                    }
                 }
             }
-        }
-    });
+        });
 
+        return li;
+    }
     return li;
 }
 

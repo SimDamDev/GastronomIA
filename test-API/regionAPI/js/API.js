@@ -1,8 +1,8 @@
-export async function getAllRegions() {
-    const response = await fetch('/regions'); 
-    const data = await response.json();
-    return data;
-}
+    export async function getAllRegions() {
+        const response = await fetch('/regions');
+        const data = await response.json();
+        return data;
+    }
 
 export async function getRegion(id) {
     const response = await fetch(`/regions/${id}`);

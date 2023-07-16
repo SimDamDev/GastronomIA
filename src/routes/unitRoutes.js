@@ -18,9 +18,23 @@ function routes(fastify, options, done) {
         },
     }, UnitController.getUnit);
     // Get all units
-    fastify.get('/units', UnitController.getAllUnits);
+    fastify.get('/units', {
+        schema: {
+            querystring: {
+                type: 'object',
+                additionalProperties: false,
+            },
+        },
+    }, UnitController.getAllUnits);
     // Get total count of units
-    fastify.get('/units/count', UnitController.getTotalUnitCount);
+    fastify.get('/units/count', {
+        schema: {
+            querystring: {
+                type: 'object',
+                additionalProperties: false,
+            },
+        },
+    }, UnitController.getTotalUnitCount);
     // Get units by status
     fastify.get('/units/status/:status', {
         schema: {

@@ -15,24 +15,41 @@ export async function getAllRegions() {
 }
 
 export async function getRegion(id) {
-    const response = await fetch(`/regions/${id}`);
-    const data = await response.json();
-    return data;
+    try {
+        const response = await fetch(`/regions/${id}`);
+        if (!response.ok) {
+            throw new Error(`Failed to fetch region: ${response.status}`);
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        errorHandler(error);
+        return null;
+    }
 }
 
 
 export async function moveRegion(id, newParentId) {
-    const response = await fetch(`/regions/${id}/move`, {
-        method: 'PATCH',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ newParentId }),
-    });
+    try {
+        const response = await fetch(`/regions/${id}/move`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ newParentId }),
+        });
 
-    const data = await response.json();
+        if (!response.ok) {
+            throw new Error(`Failed to move region: ${response.status}`);
+        }
 
-    return data;
+        const data = await response.json();
+
+        return data;
+    } catch (error) {
+        errorHandler(error);
+        return null;
+    }
 }
 
 export async function updateRegion(id, updatedData) {

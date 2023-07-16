@@ -2,8 +2,6 @@
 
 //TODO add auto deploy somehow
 
-//TODO add units in database (controller, model, service, routes)
-
 //TODO getAllRegion page and per page params, attention actually work but undefined is not recomanded for skip and limit
 
 //TODO Add database indexing for frequently searched fields.

@@ -28,7 +28,15 @@ function routes(fastify, options, done) {
         },
     }, RegionController.getRegion);
 
-    fastify.get('/regions', RegionController.getAllRegions);
+
+    fastify.get('/regions', {
+        schema: {
+            querystring: {
+                type: 'object',
+                additionalProperties: false,
+            },
+        },
+    }, RegionController.getAllRegions);
 
     fastify.put('/regions/:id', {
         schema: {
@@ -62,7 +70,14 @@ function routes(fastify, options, done) {
         },
     }, RegionController.removeRegion);
 
-    fastify.get('/regions/count', {}, RegionController.getTotalRegionCount);
+    fastify.get('/regions/count', {
+        schema: {
+            querystring: {
+                type: 'object',
+                additionalProperties: false,
+            },
+        },
+    }, RegionController.getTotalRegionCount);
 
     fastify.get('/regions/search', {
         schema: {

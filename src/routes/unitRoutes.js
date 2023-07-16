@@ -4,8 +4,6 @@ import UnitController from '../controllers/unitController.js';
 // Define all routes for units
 function routes(fastify, options, done) {
 
-    // GET routes
-    // Get a unit by id with validation
     fastify.get('/units/:id', {
         schema: {
             params: {
@@ -17,7 +15,7 @@ function routes(fastify, options, done) {
             },
         },
     }, UnitController.getUnit);
-    // Get all units
+
     fastify.get('/units', {
         schema: {
             querystring: {
@@ -26,7 +24,7 @@ function routes(fastify, options, done) {
             },
         },
     }, UnitController.getAllUnits);
-    // Get total count of units
+
     fastify.get('/units/count', {
         schema: {
             querystring: {
@@ -35,7 +33,7 @@ function routes(fastify, options, done) {
             },
         },
     }, UnitController.getTotalUnitCount);
-    // Get units by status
+
     fastify.get('/units/status/:status', {
         schema: {
             params: {
@@ -47,7 +45,7 @@ function routes(fastify, options, done) {
             },
         },
     }, UnitController.getUnitsByStatus);
-    // Get units by type
+
     fastify.get('/units/type/:type', {
         schema: {
             params: {
@@ -59,7 +57,7 @@ function routes(fastify, options, done) {
             },
         },
     }, UnitController.getUnitsByType);
-    // Get units by base unit
+
     fastify.get('/units/base/:baseUnit', {
         schema: {
             params: {
@@ -71,8 +69,7 @@ function routes(fastify, options, done) {
             },
         },
     }, UnitController.getUnitsByBase);
-    // POST routes
-    // Create a new unit
+
     fastify.post('/units', {
         schema: {
             body: {
@@ -91,8 +88,6 @@ function routes(fastify, options, done) {
         },
     }, UnitController.createUnit);
 
-    // PUT routes
-    // Update a unit
     fastify.put('/units/:id', {
         schema: {
             params: {
@@ -117,8 +112,6 @@ function routes(fastify, options, done) {
         },
     }, UnitController.updateUnit);
 
-    // PATCH routes
-    // Update unit status
     fastify.patch('/units/:id/status', {
         schema: {
             params: {
@@ -138,8 +131,6 @@ function routes(fastify, options, done) {
         },
     }, UnitController.updateUnitStatus);
 
-    // DELETE routes
-    // Remove a unit
     fastify.delete('/units/:id', {
         schema: {
             params: {

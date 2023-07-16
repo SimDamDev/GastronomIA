@@ -2,8 +2,6 @@
 
 //FEATURE add auto deploy somehow
 
-//IMPROVE add units in database (controller, model, service, routes)
-
 //OPTIMIZE getAllRegion page and per page params, attention actually work but undefined is not recomanded for skip and limit
 
 //FEATURE Add more features to the regionController and unitController

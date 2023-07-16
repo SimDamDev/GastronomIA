@@ -2,7 +2,6 @@
 node_modules/
 *.md
 .aider.input.history
-.gitignore
 .aider.tags.cache.v1/
 .aider.ident.cache.v1/
 

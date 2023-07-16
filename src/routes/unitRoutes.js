@@ -126,7 +126,17 @@ function routes(fastify, options, done) {
 
     // DELETE routes
     // Remove a unit
-    fastify.delete('/units/:id', UnitController.removeUnit);
+    fastify.delete('/units/:id', {
+        schema: {
+            params: {
+                type: 'object',
+                required: ['id'],
+                properties: {
+                    id: { type: 'string' },
+                },
+            },
+        },
+    }, UnitController.removeUnit);
 
     done();
 }

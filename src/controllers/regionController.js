@@ -11,8 +11,12 @@ class RegionController {
     }
 
     async getRegion(req, reply) {
-        const region = await RegionService.getRegion(req.params.id);
-        reply.send(region);
+        try {
+            const region = await RegionService.getRegion(req.params.id);
+            reply.send(region);
+        } catch (error) {
+            errorHandler(error, req, reply);
+        }
     }
 
     async getAllRegions(req, reply) {
@@ -26,13 +30,21 @@ class RegionController {
     }
 
     async updateRegion(req, reply) {
-        const region = await RegionService.updateRegion(req.params.id, req.body);
-        reply.send(region);
+        try {
+            const region = await RegionService.updateRegion(req.params.id, req.body);
+            reply.send(region);
+        } catch (error) {
+            errorHandler(error, req, reply);
+        }
     }
 
     async removeRegion(req, reply) {
-        await RegionService.removeRegion(req.params.id);
-        reply.code(204).send();
+        try {
+            await RegionService.removeRegion(req.params.id);
+            reply.code(204).send();
+        } catch (error) {
+            errorHandler(error, req, reply);
+        }
     }
 
     async getTotalRegionCount(req, reply) {

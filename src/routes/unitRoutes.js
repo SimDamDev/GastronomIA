@@ -1,23 +1,4 @@
-import UnitController from '../controllers/unitController.js';
 
-// Define all routes for units
-function routes(fastify, options, done) {
-
-    // GET routes
-    // Get a unit by id
-    fastify.get('/units/:id', UnitController.getUnit);
-    // Get all units
-    fastify.get('/units', UnitController.getAllUnits);
-    // Get total count of units
-    fastify.get('/units/count', UnitController.getTotalUnitCount);
-    // Search units
-    fastify.get('/units/search', UnitController.searchUnits);
-    // Get units by status
-    fastify.get('/units/status/:status', UnitController.getUnitsByStatus);
-    // Get units by type
-    fastify.get('/units/type/:type', UnitController.getUnitsByType);
-    // Get units by base unit
-    fastify.get('/units/base/:baseUnit', UnitController.getUnitsByBase);
 import UnitController from '../controllers/unitController.js';
 
 // Define all routes for units

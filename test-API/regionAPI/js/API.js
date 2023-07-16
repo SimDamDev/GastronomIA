@@ -1,7 +1,15 @@
     export async function getAllRegions() {
-        const response = await fetch('/regions');
-        const data = await response.json();
-        return data;
+        try {
+            const response = await fetch('/regions');
+            if (!response.ok) {
+                throw new Error(`Failed to fetch regions: ${response.status}`);
+            }
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.error(error);
+            return [];
+        }
     }
 
 export async function getRegion(id) {

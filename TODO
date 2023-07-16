@@ -1,7 +1,13 @@
-//TODO add sh for start and stop test server
+//FEATURE add sh for start and stop test server
 
-//TODO add auto deploy somehow
+//FEATURE add auto deploy somehow
 
-//TODO add units in database (controller, model, service, routes)
+//IMPROVE add units in database (controller, model, service, routes)
 
-//TODO getAllRegion page and per page params, attention actually work but undefined is not recomanded for skip and limit
+//OPTIMIZE getAllRegion page and per page params, attention actually work but undefined is not recomanded for skip and limit
+
+//FEATURE Add more features to the regionController and unitController
+
+//IMPROVE Improve error handling in all controllers
+
+//OPTIMIZE Optimize the structure of the routes files

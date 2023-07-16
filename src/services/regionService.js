@@ -8,7 +8,10 @@ class RegionService {
   }
 
   async getRegion(id) {
-    const region = await Region.findById(id)
+    const region = await Region.findById(id);
+    if (!region) {
+      throw new Error(`No such region with id ${id}`);
+    }
     return region;
   }
 

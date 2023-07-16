@@ -11,10 +11,10 @@ export async function refreshRegions(regionList) {
     // Consider regions with "root" parent or without a parent as parentless
     const parentlessRegions = regions.filter(region => !region.parent || region.parent === '000000000000000000000000');
     for (const region of parentlessRegions) {
-        if (region.name!="root"){
-        const li = createLi(region);
-        regionList.appendChild(li);
+        if (region.name != "root") {
+            const li = createLi(region);
+            regionList.appendChild(li);
+        }
     }
-}
 }
 

@@ -7,7 +7,7 @@ window.onload = async function() {
 
 
     // Handle move button click
-    document.querySelector('#move-button').addEventListener('click', function() { // Ici j'ai changé l'ID dans le querySelector
+    document.querySelector('#move-button').addEventListener('click', function() {
         moveAction(actionsDiv, regionList);
     });
 

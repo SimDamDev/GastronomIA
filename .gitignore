@@ -3,3 +3,10 @@ node_modules/
 *.md
 .history/
 *.db
+.aider.input.history
+.aider.ident.cache.v1/cache.db-shm
+.gitignore
+.aider.ident.cache.v1/cache.db-wal
+.gitignore
+.aider.tags.cache.v1/cache.db-wal
+.aider.tags.cache.v1/cache.db-shm

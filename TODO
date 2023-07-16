@@ -21,3 +21,9 @@
 //IMPROVE (indexRoutes.js) Enhance robustness by adding more data validation
 
 //OPTIMIZE (indexRoutes.js) Reduce code redundancy and improve code readability
+
+ //FEATURE (regionService.js & unitService.js) Add methods to handle specific use cases
+
+ //IMPROVE (regionService.js & unitService.js) Enhance error handling adding more details in error messages
+
+ //OPTIMIZE (regionService.js & unitService.js) Reduce code redundancy and improve code readability

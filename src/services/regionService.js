@@ -1,11 +1,18 @@
 import Region from '../models/regionModel.js';
 
 class RegionService {
-  async createRegion(data) {
-    const region = new Region(data);
-    await region.save();
-    return region;
-  }
+    async createRegion(data) {
+        try {
+            const region = new Region(data);
+            await region.save();
+            return region;
+        } catch (error) {
+            if (error.code === 11000) {
+                throw new Error('Region name must be unique');
+            }
+            throw error;
+        }
+    }
 
   async getRegion(id) {
     const region = await Region.findById(id);

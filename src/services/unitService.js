@@ -51,12 +51,8 @@ class UnitService {
         return unit;
     }
 
-    async getInactiveUnits(){
-        return Unit.find({ isActive: false });
-    }
-
-    async getActiveUnits(){
-        return Unit.find({ isActive: true });
+    async getUnitsByStatus(status){
+        return Unit.find({ isActive: status });
     }
 
     async getUnitsByType(type){

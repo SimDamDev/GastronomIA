@@ -42,13 +42,8 @@ class UnitController {
         reply.send(unit);
     }
 
-    async getInactiveUnits(req, reply) {
-        const units = await UnitService.getInactiveUnits();
-        reply.send(units);
-    }
-
-    async getActiveUnits(req, reply) {
-        const units = await UnitService.getActiveUnits();
+    async getUnitsByStatus(req, reply) {
+        const units = await UnitService.getUnitsByStatus(req.params.status);
         reply.send(units);
     }
 

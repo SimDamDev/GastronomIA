@@ -18,9 +18,7 @@ function routes(fastify, options, done) {
 
     fastify.patch('/units/:id/status', UnitController.updateUnitStatus);
 
-    fastify.get('/units/inactive', UnitController.getInactiveUnits);
-
-    fastify.get('/units/active', UnitController.getActiveUnits);
+    fastify.get('/units/status/:status', UnitController.getUnitsByStatus);
 
     fastify.get('/units/type/:type', UnitController.getUnitsByType);
 

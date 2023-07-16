@@ -15,3 +15,21 @@
 //IMPROVE Modify routes and controller files to improve security and robustness
 
 //OPTIMIZE Improve the structure, performance, and maintainability of routes and controller files
+
+//FEATURE (regionController.js & unitController.js) Add methods to handle new specific use cases
+
+//IMPROVE (regionController.js & unitController.js) Enhance error handling by adding more details in error messages
+
+//OPTIMIZE (regionController.js & unitController.js) Reduce code redundancy and improve code readability
+
+//FEATURE (errorHandler.js) Add features to handle specific error types
+
+//IMPROVE (errorHandler.js) Enhance error handling by adding more details in error messages
+
+//OPTIMIZE (errorHandler.js) Reduce code redundancy and improve code readability
+
+//FEATURE (indexRoutes.js) Add new routes to handle new features
+
+//IMPROVE (indexRoutes.js) Enhance robustness by adding more data validation
+
+//OPTIMIZE (indexRoutes.js) Reduce code redundancy and improve code readability

@@ -53,55 +53,80 @@ export async function moveRegion(id, newParentId) {
 }
 
 export async function updateRegion(id, updatedData) {
-    const response = await fetch(`/regions/${id}`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(updatedData)
-    });
+    try {
+        const response = await fetch(`/regions/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(updatedData)
+        });
 
-    if (!response.ok) {
-        throw new Error(`Failed to update region: ${response.status}`);
+        if (!response.ok) {
+            throw new Error(`Failed to update region: ${response.status}`);
+        }
+
+        return await response.json();
+    } catch (error) {
+        errorHandler(error);
+        return null;
     }
-
-    return response.json();
 }
 
 export async function deleteRegion(id) {
-    const response = await fetch(`/regions/${id}`, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    });
+    try {
+        const response = await fetch(`/regions/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
 
-    if (!response.ok) {
-        throw new Error(`Failed to delete region: ${response.status}`);
+        if (!response.ok) {
+            throw new Error(`Failed to delete region: ${response.status}`);
+        }
+
+        return response;  
+    } catch (error) {
+        errorHandler(error);
+        return null;
     }
-
-    return response;  
 }
 
 export async function createRegion(data) {
-    const response = await fetch('/regions', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data)
-    });
+    try {
+        const response = await fetch('/regions', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        });
 
-    if (!response.ok) {
-        throw new Error(`Failed to create region: ${response.status}`);
+        if (!response.ok) {
+            throw new Error(`Failed to create region: ${response.status}`);
+        }
+
+        return await response.json();
+    } catch (error) {
+        errorHandler(error);
+        return null;
     }
-
-    return response.json();
 }
 
 export async function getChildren(regionId) {
-    const response = await fetch(`/regions/${regionId}/children`);
-    const children = await response.json();
-    return children;
+    try {
+        const response = await fetch(`/regions/${regionId}/children`);
+
+        if (!response.ok) {
+            throw new Error(`Failed to get children: ${response.status}`);
+        }
+
+        const children = await response.json();
+        return children;
+    } catch (error) {
+        errorHandler(error);
+        return [];
+    }
 }
 

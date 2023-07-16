@@ -2,8 +2,12 @@ import RegionService from '../services/regionService.js';
 
 class RegionController {
     async createRegion(req, reply) {
-        const region = await RegionService.createRegion(req.body);
-        reply.code(201).send(region);
+        try {
+            const region = await RegionService.createRegion(req.body);
+            reply.code(201).send(region);
+        } catch (error) {
+            errorHandler(error, req, reply);
+        }
     }
 
     async getRegion(req, reply) {

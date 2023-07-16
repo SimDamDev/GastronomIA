@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import { validateRegionId } from '../utils/validators.js';
 
+// TODO: Add an index on frequently searched fields to improve database search performance.
 const regionSchema = new mongoose.Schema({
   name: {
     type: String,

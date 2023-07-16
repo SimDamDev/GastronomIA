@@ -1,5 +1,6 @@
 import Region from '../models/regionModel.js';
 
+// TODO: Implement caching for frequently requested but rarely changed data to reduce database load.
 class RegionService {
     async createRegion(data) {
         try {

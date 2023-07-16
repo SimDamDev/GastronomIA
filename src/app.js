@@ -4,7 +4,7 @@ import staticFiles from './staticFiles.js';
 import routes from './routes/indexRoutes.js';
 import {dbConnect} from './services/db.js';
 import {errorHandler} from './utils/errorHandler.js';
-import {errorHandler} from './utils/errorHandler.js';
+
 
 const app = fastify();
 // This function configures where and how static files will be served

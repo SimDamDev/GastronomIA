@@ -2,6 +2,7 @@
 import mongoose from 'mongoose';
 import {config} from '../../config/config.js';
 import { unitType } from '../../config/constants.js'; 
+import { isPositiveNumber } from '../utils/validators.js';
 
 const unitSchema = new mongoose.Schema({
     name: {
@@ -22,7 +23,7 @@ const unitSchema = new mongoose.Schema({
       type: Number,
       required: false,
       validate: {
-        validator: Number.isPositive,
+        validator: isPositiveNumber,
         message: 'Conversion factor must be a positive number'
       },
     },

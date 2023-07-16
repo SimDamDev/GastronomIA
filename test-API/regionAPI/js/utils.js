@@ -45,10 +45,9 @@ import { getChildren } from './API.js';
                 }
             }
         });
-
+        
         return li;
     }
-    return li;
 
 export function createMoveForm(submitHandler, regions) {
     // Create form elements

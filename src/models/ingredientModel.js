@@ -1,7 +1,6 @@
 // Import necessary modules
 import mongoose from 'mongoose';
 import { tasteNoteEnum, nutriScoreEnum, monthEnum } from '../../config/constants.js';
-import { arrayLimit } from '../utils/validators.js';
 
 
 // Define the Ingredient schema
@@ -20,7 +19,7 @@ const ingredientSchema = new mongoose.Schema({
       ref: 'Unit',
     }],
     required: true,
-    validate: [arrayLimit, '{PATH} needs at least 1 unit']
+    //validate: [arrayLimit, '{PATH} needs at least 1 unit']
   },
   nutritionalValues: {
     calories: Number, // Calories par 100g

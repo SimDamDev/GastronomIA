@@ -2,10 +2,10 @@ import RegionService from '../services/regionService.js';
 import { errorHandler } from '../utils/errorHandler.js';
 
 class RegionController {
-    async updateRegion(req, reply) {
+    async createRegion(req, reply) {
         try {
-            const region = await RegionService.updateRegion(req.params.id, req.body);
-            reply.send(region);
+            const region = await RegionService.createRegion(req.body);
+            reply.code(201).send(region);
         } catch (error) {
             errorHandler(error, req, reply);
         }

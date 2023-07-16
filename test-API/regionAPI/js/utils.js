@@ -49,9 +49,6 @@ import { getChildren } from './API.js';
         return li;
     }
     return li;
-}
-
-// utils.js
 
 export function createMoveForm(submitHandler, regions) {
     // Create form elements

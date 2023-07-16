@@ -21,8 +21,8 @@ class UnitController {
             const { page, perPage } = req.query;
             const units = await UnitService.getAllUnit(page, perPage); 
             reply.send(units);
-        } catch (err) {
-            reply.send(err);
+        } catch (error) {
+            errorHandler(error, req, reply);
         }
     },
     async updateUnit(req, reply) {
@@ -46,8 +46,8 @@ class UnitController {
         try {
             const count = await UnitService.getTotalUnitCount();       
             reply.send({ count });
-        } catch (err) {
-            reply.send(err);
+        } catch (error) {
+            errorHandler(error, req, reply);
         }
     },
 

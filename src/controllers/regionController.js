@@ -25,8 +25,8 @@ class RegionController {
             const { page, perPage } = req.query;
             const regions = await RegionService.getAllRegion(page, perPage);
             reply.send(regions);
-        } catch (err) {
-            reply.send(err);
+        } catch (error) {
+            errorHandler(error, req, reply);
         }
     }
 
@@ -52,8 +52,8 @@ class RegionController {
         try {
             const count = await RegionService.getTotalRegionCount();   
             reply.send({ count });
-        } catch (err) {
-            reply.send(err);
+        } catch (error) {
+            errorHandler(error, req, reply);
         }
     }
 

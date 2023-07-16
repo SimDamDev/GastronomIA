@@ -1,7 +1,7 @@
 import app from './app.js';
 import {config} from '../config/config.js';
 
-const port = process.env.PORT || config.server;
+const port = config.server;
 
 app.listen(port, (err, address) => {
     if (err) {

@@ -1,4 +1,5 @@
 import UnitService from '../services/unitService.js';
+import { errorHandler } from '../utils/errorHandler.js';
 
 class UnitController {
     async createUnit(req, reply) {
@@ -6,7 +7,7 @@ class UnitController {
             const unit = await UnitService.createUnit(req.body);
             reply.code(201).send(unit);
         } catch (error) {
-            reply.code(400).send({ error: error.message });
+            errorHandler(error, req, reply);
         }
     }
 
@@ -29,7 +30,7 @@ class UnitController {
             const unit = await UnitService.updateUnit(req.params.id, req.body);
             reply.send(unit);
         } catch (error) {
-            reply.code(400).send({ error: error.message });
+            errorHandler(error, req, reply);
         }
     }
 
@@ -38,7 +39,7 @@ class UnitController {
             await UnitService.removeUnit(req.params.id);
             reply.code(204).send();
         } catch (error) {
-            reply.code(400).send({ error: error.message });
+            errorHandler(error, req, reply);
         }
     }
     async getTotalUnitCount(req, reply) {

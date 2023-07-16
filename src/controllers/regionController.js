@@ -1,4 +1,5 @@
 import RegionService from '../services/regionService.js';
+import { errorHandler } from '../utils/errorHandler.js';
 
 class RegionController {
     async createRegion(req, reply) {

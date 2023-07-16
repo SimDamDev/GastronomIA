@@ -53,7 +53,7 @@ class UnitController {
         } catch (error) {
             errorHandler(error, req, reply);
         }
-    },
+    }
 
     async searchUnits(req, reply) {
         try {

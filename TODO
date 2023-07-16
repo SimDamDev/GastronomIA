@@ -5,3 +5,13 @@
 //TODO add units in database (controller, model, service, routes)
 
 //TODO getAllRegion page and per page params, attention actually work but undefined is not recomanded for skip and limit
+
+//TODO Add database indexing for frequently searched fields.
+
+//TODO Implement caching for frequently requested but rarely changed data.
+
+//TODO Add pagination to the endpoint that retrieves all regions.
+
+//TODO Implement HTTP response compression.
+
+//TODO Improve error handling.

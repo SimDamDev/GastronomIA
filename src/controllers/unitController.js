@@ -28,7 +28,7 @@ class UnitController {
         } catch (error) {
             errorHandler(error, req, reply);
         }
-    },
+    }
     async updateUnit(req, reply) {
         try {
             const unit = await UnitService.updateUnit(req.params.id, req.body);

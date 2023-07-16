@@ -86,7 +86,7 @@ class RegionController {
 
     async moveRegion(req, reply) {
         try {
-            const region = await RegionService.moveRegion(req.params.id, req.body.newParentId);
+            const region = await RegionService.moveRegion(req.params.id, req.params.newParentId);
             reply.send(region);
         } catch (error) {
             errorHandler(error, req, reply);

@@ -2,8 +2,12 @@ import UnitService from '../services/unitService.js';
 
 class UnitController {
     async createUnit(req, reply) {
-        const unit = await UnitService.createUnit(req.body);
-        reply.code(201).send(unit);
+        try {
+            const unit = await UnitService.createUnit(req.body);
+            reply.code(201).send(unit);
+        } catch (error) {
+            reply.code(400).send({ error: error.message });
+        }
     }
 
     async getUnit(req, reply) {
@@ -18,13 +22,21 @@ class UnitController {
     }
 
     async updateUnit(req, reply) {
-        const unit = await UnitService.updateUnit(req.params.id, req.body);
-        reply.send(unit);
+        try {
+            const unit = await UnitService.updateUnit(req.params.id, req.body);
+            reply.send(unit);
+        } catch (error) {
+            reply.code(400).send({ error: error.message });
+        }
     }
 
     async removeUnit(req, reply) {
-        await UnitService.removeUnit(req.params.id);
-        reply.code(204).send();
+        try {
+            await UnitService.removeUnit(req.params.id);
+            reply.code(204).send();
+        } catch (error) {
+            reply.code(400).send({ error: error.message });
+        }
     }
 
     async getTotalUnitCount(req, reply) {

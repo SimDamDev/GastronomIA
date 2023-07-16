@@ -17,11 +17,22 @@ export async function createAction(actionsDiv, unitList){
         //TODO gerer le default icon coté serveur
         const isActive= true
 
-        if (type.value == "Solid" && baseUnit.value != "gramme"){
-            alert("vous etes sure de vouloir attribuer" + baseUnit.value + " a cette unité de type Solid" )
-            return
-        } 
+        if (type === "Solid" && baseUnit !== "gramme"){
+            let confirmation = confirm("Etes-vous sûr de vouloir attribuer " + baseUnit + " à cette unité de type Solid ?");
+            if (!confirmation){
+                console.log("Annulation de la création de l'unité");
+                return;
+            }
+        }
 
+        if (type === "Liquid" && baseUnit !== "millilitree"){
+            let confirmation = confirm("Etes-vous sûr de vouloir attribuer " + baseUnit + " à cette unité de type Liquid ?");
+            if (!confirmation){
+                console.log("Annulation de la création de l'unité");
+                return;
+            }
+        }
+        
         await createUnit({name: unitName, abbreviation: unitabbreviation, type: type, conversionFactor: conversionFactor, baseUnit: baseUnit, icon: icon, isActive: isActive});
 
         createForm.querySelector('#unit-name').value = '';

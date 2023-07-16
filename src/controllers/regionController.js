@@ -58,23 +58,39 @@ class RegionController {
     }
 
     async searchRegions(req, reply) {
-        const regions = await RegionService.searchRegions(req.query.q);
-        reply.send(regions);
+        try {
+            const regions = await RegionService.searchRegions(req.query.q);
+            reply.send(regions);
+        } catch (error) {
+            errorHandler(error, req, reply);
+        }
     }
 
     async getChildren(req, reply) {
-        const children = await RegionService.getChildren(req.params.id);
-        reply.send(children);
+        try {
+            const children = await RegionService.getChildren(req.params.id);
+            reply.send(children);
+        } catch (error) {
+            errorHandler(error, req, reply);
+        }
     }
 
     async getParent(req, reply) {
-        const parent = await RegionService.getParent(req.params.id);
-        reply.send(parent);
+        try {
+            const parent = await RegionService.getParent(req.params.id);
+            reply.send(parent);
+        } catch (error) {
+            errorHandler(error, req, reply);
+        }
     }
 
     async moveRegion(req, reply) {
-        const region = await RegionService.moveRegion(req.params.id, req.body.newParentId);
-        reply.send(region);
+        try {
+            const region = await RegionService.moveRegion(req.params.id, req.body.newParentId);
+            reply.send(region);
+        } catch (error) {
+            errorHandler(error, req, reply);
+        }
     }
 }
 

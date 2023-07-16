@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import { validateRegionId } from '../utils/validators.js';
 
 const regionSchema = new mongoose.Schema({
   name: {
@@ -15,10 +16,7 @@ const regionSchema = new mongoose.Schema({
     ref: 'Region',
     required: false,
     validate: {
-      validator: async function(v) {
-        if (v === null) return true;
-        return await Region.findById(v) !== null;
-      },
+      validator: validateRegionId,
       message: props => `No such region with id ${props.value}`
     },
   },

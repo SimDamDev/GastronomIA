@@ -1,16 +1,18 @@
-    export async function getAllRegions() {
-        try {
-            const response = await fetch('/regions');
-            if (!response.ok) {
-                throw new Error(`Failed to fetch regions: ${response.status}`);
-            }
-            const data = await response.json();
-            return data;
-        } catch (error) {
-            console.error(error);
-            return [];
+import { errorHandler } from './errorHandler.js';
+
+export async function getAllRegions() {
+    try {
+        const response = await fetch('/regions');
+        if (!response.ok) {
+            throw new Error(`Failed to fetch regions: ${response.status}`);
         }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        errorHandler(error);
+        return [];
     }
+}
 
 export async function getRegion(id) {
     const response = await fetch(`/regions/${id}`);

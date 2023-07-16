@@ -31,14 +31,54 @@ function routes(fastify, options, done) {
     // Get total count of units
     fastify.get('/units/count', UnitController.getTotalUnitCount);
     // Search units
-    fastify.get('/units/search', UnitController.searchUnits);
+    // Get a unit by id
+    fastify.get('/units/:id', {
+        schema: {
+            params: {
+                type: 'object',
+                required: ['id'],
+                properties: {
+                    id: { type: 'string' },
+                },
+            },
+        },
+    }, UnitController.getUnit);
     // Get units by status
-    fastify.get('/units/status/:status', UnitController.getUnitsByStatus);
+    fastify.get('/units/status/:status', {
+        schema: {
+            params: {
+                type: 'object',
+                required: ['status'],
+                properties: {
+                    status: { type: 'boolean' },
+                },
+            },
+        },
+    }, UnitController.getUnitsByStatus);
     // Get units by type
-    fastify.get('/units/type/:type', UnitController.getUnitsByType);
+    fastify.get('/units/type/:type', {
+        schema: {
+            params: {
+                type: 'object',
+                required: ['type'],
+                properties: {
+                    type: { type: 'string' },
+                },
+            },
+        },
+    }, UnitController.getUnitsByType);
     // Get units by base unit
-    fastify.get('/units/base/:baseUnit', UnitController.getUnitsByBase);
-
+    fastify.get('/units/base/:baseUnit', {
+        schema: {
+            params: {
+                type: 'object',
+                required: ['baseUnit'],
+                properties: {
+                    baseUnit: { type: 'string' },
+                },
+            },
+        },
+    }, UnitController.getUnitsByBase);
     // POST routes
     // Create a new unit
     fastify.post('/units', {

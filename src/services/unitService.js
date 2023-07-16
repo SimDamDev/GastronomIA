@@ -2,9 +2,16 @@ import Unit from '../models/unitModel.js'
 
 class UnitService {
     async createUnit(data){
-    const unit = new Unit(data);
-    await unit.save();
-    return unit;
+        try {
+            const unit = new Unit(data);
+            await unit.save();
+            return unit;
+        } catch (error) {
+            if (error.code === 11000) {
+                throw new Error('Unit name must be unique');
+            }
+            throw error;
+        }
     }
 
     async getUnit(id){
@@ -18,15 +25,26 @@ class UnitService {
     }
 
     async updateUnit(id, data){
-        const filter = { _id: id };
-        const update = { $set: data };
-        const unit = await Unit.findOneAndUpdate(filter, update, { new: true });
-        return unit;
+        try {
+            const filter = { _id: id };
+            const update = { $set: data };
+            const unit = await Unit.findOneAndUpdate(filter, update, { new: true });
+            return unit;
+        } catch (error) {
+            if (error.code === 11000) {
+                throw new Error('Unit name must be unique');
+            }
+            throw error;
+        }
     }
 
     async removeUnit(id){
-        const unit = await Unit.findByIdAndDelete(id)
-        return unit;
+        try {
+            const unit = await Unit.findByIdAndDelete(id)
+            return unit;
+        } catch (error) {
+            throw error;
+        }
     }
 
     async getTotalUnitCount(){

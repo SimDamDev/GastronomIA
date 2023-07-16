@@ -2,10 +2,16 @@
 
 //FEATURE add auto deploy somehow
 
-//OPTIMIZE getAllRegion page and per page params, attention actually work but undefined is not recomanded for skip and limit
+//OPTIMIZE getAllRegion page and perPage params, attention actually work but undefined is not recommended for skip and limit
 
 //FEATURE Add more features to the regionController and unitController
 
 //IMPROVE Improve error handling in all controllers
 
 //OPTIMIZE Optimize the structure of the routes files
+
+//FEATURE Add useful but non-essential features to routes and controller files
+
+//IMPROVE Modify routes and controller files to improve security and robustness
+
+//OPTIMIZE Improve the structure, performance, and maintainability of routes and controller files

@@ -52,8 +52,12 @@ export async function updateAction(actionsDiv, regionList) {
         const regionId = updateForm.querySelector('#region-id').value;
         const newRegionName = updateForm.querySelector('#new-region-name').value;
 
-        // Make the API request to update the region
+    // Make the API request to update the region
+    try {
         await updateRegion(regionId, { name: newRegionName });
+    } catch (error) {
+        errorHandler(error);
+    }
 
         // Clear the form
         updateForm.querySelector('#region-id').value = '';
@@ -84,13 +88,13 @@ export async function deleteAction(actionsDiv, regionList) {
         event.preventDefault();
         const regionId = deleteForm.querySelector('#region-id').value;
 
-        // Make the API request to delete the region
-        try {
-            await deleteRegion(regionId);
-            alert("La région a été supprimée avec succès");
-        } catch (err) {
-            alert("La suppression de la région a échoué");
-        }
+    // Make the API request to delete the region
+    try {
+        await deleteRegion(regionId);
+        alert("La région a été supprimée avec succès");
+    } catch (error) {
+        errorHandler(error);
+    }
 
         // Clear the form
         deleteForm.querySelector('#region-id').value = '';
@@ -121,8 +125,12 @@ export async function createAction(actionsDiv, regionList) {
         const regionName = createForm.querySelector('#region-name').value;
         const parentId = createForm.querySelector('#parent-region-id').value;
 
-        // Make the API request to create the region
+    // Make the API request to create the region
+    try {
         await createRegion({ name: regionName, parent: parentId });
+    } catch (error) {
+        errorHandler(error);
+    }
 
         // Clear the form
         createForm.querySelector('#region-name').value = '';

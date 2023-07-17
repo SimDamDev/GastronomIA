@@ -54,6 +54,12 @@ class RegionService {
   }
 
 
+  /**
+   * Update a region.
+   * @param {string} id - The ID of the region to update.
+   * @param {Object} data - The data to update the region with.
+   * @returns {Promise<Object>} The updated region.
+   */
   async updateRegion(id, data) {
     const filter = {_id: id};
     const update = {$set: data};
@@ -61,7 +67,12 @@ class RegionService {
     return updatedRegion;
   }
 
-
+  /**
+   * Remove a region.
+   * @param {string} id - The ID of the region to remove.
+   * @returns {Promise<Object>} The removed region.
+   * @throws {Error} If no region is found with the given ID.
+   */
   async removeRegion(id) {
     const removedRegion = await Region.findByIdAndDelete(id);
     if (!removedRegion) {
@@ -70,11 +81,20 @@ class RegionService {
     return removedRegion;
   }
 
+  /**
+   * Get the total count of regions.
+   * @returns {Promise<number>} The total count of regions.
+   */
   async getTotalRegionCount() {
     const count = await Region.countDocuments();
     return count;
   }
 
+  /**
+   * Search regions.
+   * @param {string} query - The search query.
+   * @returns {Promise<Array>} The regions that match the search query.
+   */
   async searchRegions(query) {
     const regions = await Region.find({
       $or: [
@@ -85,23 +105,38 @@ class RegionService {
     return regions;
   }
 
+  /**
+   * Get the children of a region.
+   * @param {string} id - The ID of the region to get the children of.
+   * @returns {Promise<Array>} The children of the region.
+   */
   async getChildren(id) {
     const children = await Region.find({parent: id});
     return children;
   }
 
+  /**
+   * Get the parent of a region.
+   * @param {string} id - The ID of the region to get the parent of.
+   * @returns {Promise<Object>} The parent of the region.
+   */
   async getParent(id) {
     const region = await Region.findById(id);
     const parent = await Region.findById(region.parent);
     return parent;
   }
 
+  /**
+   * Move a region to a new parent.
+   * @param {string} id - The ID of the region to move.
+   * @param {string} newParentId - The ID of the new parent region.
+   * @returns {Promise<Object>} The moved region.
+   */
   async moveRegion(id, newParentId) {
     const filter = {_id: id};
     const update = {$set: {parent: newParentId}};
     const region = await Region.findOneAndUpdate(filter, update, {new: true});
     return region;
   }
-}
 
 export default new RegionService();

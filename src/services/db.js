@@ -5,6 +5,8 @@ import 'dotenv/config.js';
  * Connect to the MongoDB database.
  * If the connection is successful, log a success message.
  * If the connection fails, log the error and exit the process with a failure code.
+ * The process.exit(1) line causes the Node.js process to exit with a failure code,
+ * which can be useful for stopping the server if the database connection fails.
  */
 async function dbConnect() {
   try {

@@ -1,6 +1,20 @@
-import { Region } from '../models/indexModel.js';
+/**
+ * This file contains the RegionService class.
+ */
 
+import { Region } from '../models/indexModel.js';
+import { paginate } from '../utils/pagination.js';
+
+/**
+ * Class representing the service for regions.
+ */
 class RegionService {
+  /**
+   * Create a region.
+   * @param {Object} data - The data to create the region with.
+   * @returns {Promise<Object>} The created region.
+   * @throws {Error} If the region name is not unique.
+   */
   async createRegion(data) {
     try {
       const region = new Region(data);
@@ -14,6 +28,12 @@ class RegionService {
     }
   }
 
+  /**
+   * Get a region by ID.
+   * @param {string} id - The ID of the region to get.
+   * @returns {Promise<Object>} The region.
+   * @throws {Error} If no region is found with the given ID.
+   */
   async getRegion(id) {
     const region = await Region.findById(id);
     if (!region) {
@@ -22,8 +42,14 @@ class RegionService {
     return region;
   }
 
+  /**
+   * Get all regions with pagination.
+   * @param {number} page - The page number.
+   * @param {number} perPage - The number of items per page.
+   * @returns {Promise<Array>} The regions.
+   */
   async getAllRegion(page, perPage) {
-    const regions = await Region.find().skip((page - 1) * perPage).limit(perPage);
+    const regions = await paginate(Region.find(), page, perPage);
     return regions;
   }
 

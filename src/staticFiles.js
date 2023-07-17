@@ -1,7 +1,7 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-import fastifyStatic from 'fastify-static';
+import fastifyStatic from '@fastify/static';
 import { errorHandler } from './utils/errorHandler.js';
 
 // Get the current filename and directory
@@ -28,3 +28,4 @@ export default async function staticFiles(fastify, options) {
     errorHandler,
   });
 }
+o

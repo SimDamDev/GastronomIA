@@ -7,6 +7,5 @@ import Unit from './unitModel.js';
 import Region from './regionModel.js';
 import IngredientCategory from './ingredientCategory.js';
 
-import RegionModel from './regionModel.js';
 
-export {Ingredient, Recipe, Unit, RegionModel, IngredientCategory};
+export {Ingredient, Recipe, Unit, Region, IngredientCategory};

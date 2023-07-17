@@ -25,6 +25,6 @@ const regionSchema = new mongoose.Schema({
   },
 });
 
-const RegionModel = mongoose.model('RegionModel', regionSchema);
+const Region = mongoose.model('Region', regionSchema);
 
-export default RegionModel;
+export default Region;

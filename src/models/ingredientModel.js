@@ -51,7 +51,7 @@ const ingredientSchema = new mongoose.Schema({
   seasonality: [{
     region: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Region',
+      ref: 'RegionModel',
     },
     months: [{
       type: String,

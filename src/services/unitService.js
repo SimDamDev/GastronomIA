@@ -1,16 +1,15 @@
-import Unit from '../models/unitModel.js';
+import { Unit } from '../models/indexModel.js';
 
 class UnitService {
   async createUnit(data) {
+import { handleError } from '../utils/helpers.js';
+
     try {
       const unit = new Unit(data);
       await unit.save();
       return unit;
     } catch (error) {
-      if (error.code === 11000) {
-        throw new Error('Unit name must be unique');
-      }
-      throw error;
+      handleError(error);
     }
   }
 

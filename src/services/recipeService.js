@@ -1,5 +1,5 @@
 // Import necessary models
-import {Recipe} from '../models/indexModel.js';
+import { Recipe } from '../models/indexModel.js';
 
 export async function getRecipesService() {
   // Here you can get all recipes from your database

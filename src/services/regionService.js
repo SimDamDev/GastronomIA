@@ -1,4 +1,4 @@
-import Region from '../models/regionModel.js';
+import { Region } from '../models/indexModel.js';
 
 class RegionService {
   async createRegion(data) {

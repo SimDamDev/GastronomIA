@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { validateRegionId } from '../utils/validators.js';
+import {validateRegionId} from '../utils/validators.js';
 
 const regionSchema = new mongoose.Schema({
   name: {
@@ -17,7 +17,7 @@ const regionSchema = new mongoose.Schema({
     required: false,
     validate: {
       validator: validateRegionId,
-      message: props => `No such region with id ${props.value}`
+      message: (props) => `No such region with id ${props.value}`,
     },
   },
 });

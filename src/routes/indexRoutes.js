@@ -12,7 +12,7 @@ function routes(fastify, options, done) {
   fastify.register(recipeRoutes);
   fastify.register(regionRoutes);
   fastify.register(unitRoutes);
-  fastify.register(configRoutes)
+  fastify.register(configRoutes);
 
   done();
 }

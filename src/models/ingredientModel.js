@@ -1,6 +1,6 @@
 // Import necessary modules
 import mongoose from 'mongoose';
-import { tasteNoteEnum, nutriScoreEnum, monthEnum } from '../../config/constants.js';
+import {tasteNoteEnum, nutriScoreEnum, monthEnum} from '../../config/constants.js';
 
 
 // Define the Ingredient schema
@@ -19,7 +19,7 @@ const ingredientSchema = new mongoose.Schema({
       ref: 'Unit',
     }],
     required: true,
-    //validate: [arrayLimit, '{PATH} needs at least 1 unit']
+    // validate: [arrayLimit, '{PATH} needs at least 1 unit']
   },
   nutritionalValues: {
     calories: Number, // Calories par 100g
@@ -38,11 +38,11 @@ const ingredientSchema = new mongoose.Schema({
   category: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'ingredientCategory',
-    default: ""/* Default category ID */,
+    default: ''/* Default category ID */,
   }],
   image: {
     type: String,
-    default: ""/* Default image URL */,
+    default: ''/* Default image URL */,
   },
   seasonality: [{
     region: {
@@ -61,7 +61,7 @@ const ingredientSchema = new mongoose.Schema({
   },
   density: {
     type: Number,
-    required: false, //need this for conversion between units in g/mL
+    required: false, // need this for conversion between units in g/mL
   },
 });
 

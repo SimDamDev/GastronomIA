@@ -1,29 +1,30 @@
 import path from 'path';
-import {fileURLToPath} from 'url';
-import {dirname} from 'path';
-import fastifyStatic from '@fastify/static';
-import {errorHandler} from './utils/errorHandler.js';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+import fastifyStatic from 'fastify-static';
+import { errorHandler } from './utils/errorHandler.js';
 
-// Define the directory name
-const __dirname = dirname(fileURLToPath(import.meta.url));
+// Get the current filename and directory
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-// Define the paths for the static files
+// Define the paths for the static files directories
 const publicPath = path.join(__dirname, '../public');
 const testAPIPath = path.join(__dirname, '../test-API');
 
 export default async function staticFiles(fastify, options) {
-  // Serve static files from 'public'
+  // Register the static file server for the 'public' directory
   fastify.register(fastifyStatic, {
     root: publicPath,
     prefix: '/',
-    errorHandler: errorHandler,
+    errorHandler,
   });
 
-  // Serve static files from 'test-API'
+  // Register the static file server for the 'test-API' directory
   fastify.register(fastifyStatic, {
     root: testAPIPath,
     prefix: '/test-API/',
     decorateReply: false,
-    errorHandler: errorHandler,
+    errorHandler,
   });
 }

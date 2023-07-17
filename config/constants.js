@@ -4,6 +4,6 @@ export const nutriScoreEnum = ['A', 'B', 'C', 'D', 'E'];
 
 export const monthEnum = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-export const unitType = ['Solid','Liquid', 'Universal'];
+export const unitType = ['Solid', 'Liquid', 'Universal'];
 
-export const baseUnit = ['gramme', 'millilitre']
+export const baseUnit = ['gramme', 'millilitre'];

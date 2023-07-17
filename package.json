@@ -20,6 +20,8 @@
     "openai": "^3.3.0"
   },
   "devDependencies": {
-    "@gradio/client": "^0.1.4"
+    "@gradio/client": "^0.1.4",
+    "eslint": "^8.45.0",
+    "eslint-config-google": "^0.14.0"
   }
 }

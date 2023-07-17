@@ -19,7 +19,8 @@ const unitSchema = new mongoose.Schema({
     enum: Object.values(unitType),
     required: false,
   },
-  conversionFactor: { // Conversion factor to base unit
+  conversionFactor: { 
+    // Conversion factor to base unit. This must be a positive number.
     type: Number,
     required: false,
     validate: {
@@ -27,9 +28,10 @@ const unitSchema = new mongoose.Schema({
       message: 'Conversion factor must be a positive number',
     },
   },
-  baseUnit: { // Base unit g or mL
+  icon: {
+    // The icon for the unit. This is required only if config.requireUnitIcons is true.
     type: String,
-    required: true,
+    required: config.requireUnitIcons,
   },
   icon: {
     type: String,

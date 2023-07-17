@@ -22,20 +22,24 @@ const ingredientSchema = new mongoose.Schema({
     // validate: [arrayLimit, '{PATH} needs at least 1 unit']
   },
   nutritionalValues: {
-    calories: Number, // Calories par 100g
-    proteins: Number, // Protéines par 100g
-    carbs: Number, // Glucides par 100g
-    fats: Number, // Lipides par 100g
-    fiber: Number, // Fibres par 100g
-    sugar: Number, // Sucres par 100g
-    sodium: Number, // Sodium par 100g
+    // Nutritional values per 100g of the ingredient.
+    calories: Number, 
+    proteins: Number, 
+    carbs: Number, 
+    fats: Number, 
+    fiber: Number, 
+    sugar: Number, 
+    sodium: Number, 
   },
   nutriScore: {
+    // The Nutri-Score of the ingredient. This is not required.
     type: String,
     enum: nutriScoreEnum,
     required: false,
   },
   category: [{
+    // The category of the ingredient. This is a reference to an IngredientCategory document.
+    // If no category is provided, the default category is used.
     type: mongoose.Schema.Types.ObjectId,
     ref: 'ingredientCategory',
     default: ''/* Default category ID */,

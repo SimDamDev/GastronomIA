@@ -1,6 +1,7 @@
 import { moveRegion, getAllRegions, updateRegion, deleteRegion, createRegion} from './API.js';
 import { refreshRegions } from './refreshRegions.js';
 import { createMoveForm, createUpdateForm, createDeleteForm, createCreateForm} from './utils.js';
+import { errorHandler } from './errorHandler.js';
 
 
     export async function moveAction(actionsDiv, regionList) {
@@ -17,8 +18,12 @@ import { createMoveForm, createUpdateForm, createDeleteForm, createCreateForm} f
                 return;
             }
 
-            // Make the API request to move the region
-            await moveRegion(regionId, newParentId);
+    // Make the API request to move the region
+    try {
+        await moveRegion(regionId, newParentId);
+    } catch (error) {
+        errorHandler(error);
+    }
 
             // Clear the form
             moveForm.querySelector('#region-id').value = '';

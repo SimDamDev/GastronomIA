@@ -8,10 +8,13 @@ const regionSchema = new mongoose.Schema({
     unique: true,
   },
   description: {
+    // The description of the region. This is not required.
     type: String,
     required: false,
   },
   parent: {
+    // The parent of the region. This is a reference to another Region document.
+    // This is not required, but if it is provided, it must be a valid region ID.
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Region',
     required: false,

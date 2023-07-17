@@ -5,12 +5,12 @@ import {errorHandler} from './utils/errorHandler.js';
 const port = config.server;
 
 app.listen(port, (err, address) => {
-    if (err) {
-        errorHandler(err);
-        process.exit(1);
-    }
+  if (err) {
+    errorHandler(err);
+    process.exit(1);
+  }
 
-    console.log(`Server listening at ${address}`);
-})
+  console.log(`Server listening at ${address}`);
+});
 
 

@@ -1,6 +1,6 @@
 import path from 'path';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+import {fileURLToPath} from 'url';
+import {dirname} from 'path';
 import fastifyStatic from '@fastify/static';
 import {errorHandler} from './utils/errorHandler.js';
 
@@ -15,8 +15,8 @@ export default async function staticFiles(fastify, options) {
   // Serve static files from 'public'
   fastify.register(fastifyStatic, {
     root: publicPath,
-    prefix: '/', 
-    errorHandler: errorHandler
+    prefix: '/',
+    errorHandler: errorHandler,
   });
 
   // Serve static files from 'test-API'
@@ -24,6 +24,6 @@ export default async function staticFiles(fastify, options) {
     root: testAPIPath,
     prefix: '/test-API/',
     decorateReply: false,
-    errorHandler: errorHandler
-  });  
+    errorHandler: errorHandler,
+  });
 }

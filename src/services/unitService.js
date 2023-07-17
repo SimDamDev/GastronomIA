@@ -2,14 +2,14 @@ import { Unit } from '../models/indexModel.js';
 
 class UnitService {
   async createUnit(data) {
-import { handleError } from '../utils/helpers.js';
+import { errorHandler } from '../utils/errorHandler.js';
 
     try {
       const unit = new Unit(data);
       await unit.save();
       return unit;
     } catch (error) {
-      handleError(error);
+      errorHandler(error);
     }
   }
 

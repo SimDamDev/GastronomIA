@@ -7,17 +7,29 @@
  * @param {Object} reply - The Fastify reply object.
  */
 async function errorHandler(error, request, reply) {
-  console.error(error);
+  // Log the error and the request that caused it
+  console.error('Error:', error);
+  console.error('Request that caused the error:', request.url, request.method, request.params, request.body);
+
+  let statusCode;
+  let errorMessage;
 
   if (error.code === 11000) {
-    reply.status(400).send('Name must be unique');
+    statusCode = 400;
+    errorMessage = 'Name must be unique';
   } else if (error.validation) {
-    reply.status(400).send(error.validation);
+    statusCode = 400;
+    errorMessage = error.validation;
   } else if (error.message) {
-    reply.status(500).send(error.message);
+    statusCode = 500;
+    errorMessage = error.message;
   } else {
-    reply.status(500).send('Internal Server Error');
+    statusCode = 500;
+    errorMessage = 'Internal Server Error';
   }
+
+  // Send the error response in a standardized format
+  reply.status(statusCode).send({ error: true, message: errorMessage });
 }
 
 export {errorHandler};

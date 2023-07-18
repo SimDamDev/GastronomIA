@@ -5,6 +5,9 @@ import { errorHandler } from './utils/errorHandler.js';
 /**
  * Starts the server.
  * Retrieves the port from the configuration and listens for incoming connections.
+ * @function
+ * @name startServer
+ * @returns {void}
  */
 function startServer() {
   const port = config.server;

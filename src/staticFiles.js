@@ -28,4 +28,3 @@ export default async function staticFiles(fastify, options) {
     errorHandler,
   });
 }
-o

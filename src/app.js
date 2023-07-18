@@ -4,19 +4,36 @@ import routes from './routes/indexRoutes.js';
 import {dbConnect} from './services/db.js';
 import {errorHandler} from './utils/errorHandler.js';
 
+// Instantiate a Fastify application
+/** @type {import('fastify').FastifyInstance} */
 const app = fastify();
 
-// Configuring where and how static files will be served
+/**
+ * Configure the static files' serving module.
+ * @see {@link ./staticFiles.js}
+ */
 app.register(staticFiles);
 
-// Establishing a connection to the database
+/**
+ * Establish a connection to the MongoDB database.
+ * @see {@link ./services/db.js}
+ */
 dbConnect();
 
-// Registering routes
+/**
+ * Register the main routes of the application.
+ * @see {@link ./routes/indexRoutes.js}
+ */
 app.register(routes);
 
-// Configuring the error handler
+/**
+ * Register a centralized error handling function for the application.
+ * @see {@link ./utils/errorHandler.js}
+ */
 app.setErrorHandler(errorHandler);
 
-// Exporting the application for use by other modules
+/**
+ * Export the Fastify application for use in other modules.
+ * @type {import('fastify').FastifyInstance}
+ */
 export default app;

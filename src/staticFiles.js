@@ -12,6 +12,13 @@ const __dirname = dirname(__filename);
 const publicPath = path.join(__dirname, '../public');
 const testAPIPath = path.join(__dirname, '../test-API');
 
+/**
+ * Registers static file servers for the 'public' and 'test-API' directories.
+ *
+ * @async
+ * @param {Object} fastify - The Fastify instance.
+ * @param {Object} options - The options object.
+ */
 export default async function staticFiles(fastify, options) {
   // Register the static file server for the 'public' directory
   fastify.register(fastifyStatic, {

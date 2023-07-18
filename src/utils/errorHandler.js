@@ -1,3 +1,11 @@
+/**
+ * Handles errors and sends appropriate responses.
+ *
+ * @async
+ * @param {Error} error - The error to handle.
+ * @param {Object} request - The Fastify request object.
+ * @param {Object} reply - The Fastify reply object.
+ */
 async function errorHandler(error, request, reply) {
   console.error(error);
 

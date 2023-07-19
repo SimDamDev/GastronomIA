@@ -1,5 +1,5 @@
 // Import necessary services or models
-import {getRecipesService, addRecipeService} from '../services/indexService.js';
+import {getRecipesService, addRecipeService} from '../services/modelServices/index.js';
 
 export async function getRecipes(request, reply) {
   // Here you can get all ingredients from your database and send them to the client

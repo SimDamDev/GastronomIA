@@ -1,4 +1,4 @@
-import UnitService from '../services/unitService.js';
+import UnitService from '../services/modelServices/unitService.js';
 import {errorHandler} from '../utils/errorHandler.js';
 
 class UnitController {

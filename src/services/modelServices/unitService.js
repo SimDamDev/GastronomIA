@@ -2,8 +2,8 @@
  * This file contains the UnitService class.
  */
 
-import { Unit } from '../models/indexModel.js';
-import { errorHandler } from '../utils/errorHandler.js';
+import { Unit } from '../../models/indexModel.js';
+import { errorHandler } from '../../utils/errorHandler.js';
 import { paginate } from '../utils/pagination.js';
 
 /**

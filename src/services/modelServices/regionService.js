@@ -2,7 +2,7 @@
  * This file contains the RegionService class.
  */
 
-import { Region } from '../models/indexModel.js';
+import { Region } from '../../models/indexModel.js';
 import { paginate } from '../utils/pagination.js';
 
 /**
@@ -138,5 +138,6 @@ class RegionService {
     const region = await Region.findOneAndUpdate(filter, update, {new: true});
     return region;
   }
+}
 
 export default new RegionService();

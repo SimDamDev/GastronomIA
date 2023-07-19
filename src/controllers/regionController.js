@@ -1,7 +1,7 @@
 /**
  * Import RegionService for region operations
  */
-import RegionService from '../services/regionService.js';
+import RegionService from '../services/modelServices/regionService.js';
 
 /**
  * Import errorHandler for handling errors

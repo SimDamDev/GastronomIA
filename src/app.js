@@ -2,7 +2,7 @@ import fastify from 'fastify';
 import pino from 'fastify-pino';
 import staticFiles from './staticFiles.js';
 import routes from './routes/indexRoutes.js';
-import {dbConnect} from './services/db.js';
+import {dbConnect} from './services/standaloneServices/db.js';
 import {errorHandler} from './utils/errorHandler.js';
 
 // Instantiate a Fastify application

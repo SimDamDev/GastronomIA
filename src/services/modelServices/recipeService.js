@@ -3,7 +3,7 @@
  */
 
 // Import necessary models
-import { Recipe } from '../models/indexModel.js';
+import { Recipe } from '../../models/indexModel.js';
 
 /**
  * Get all recipes.

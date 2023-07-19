@@ -28,4 +28,3 @@ function validateObject(object, rules) {
       }
     }
 }
-  }

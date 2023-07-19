@@ -8,6 +8,10 @@
  * @throws {Error} Will throw an error if a property does not satisfy its associated validation function.
  */
 function validateObject(object, rules) {
+    if (!object || !rules) {
+        throw new Error('Object and rules cannot be null or undefined');
+    }
+
     for (const rule of rules) {
       const value = object[rule.key];
   
@@ -23,4 +27,5 @@ function validateObject(object, rules) {
         throw new Error(`${rule.key} configuration is invalid`);
       }
     }
+}
   }

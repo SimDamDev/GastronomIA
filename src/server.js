@@ -2,6 +2,7 @@ import app from './app.js';
 import { config } from '../config/config.js';
 import { errorHandler } from './utils/errorHandler.js';
 
+
 /**
  * Starts the server.
  * Retrieves the port from the configuration and listens for incoming connections.
@@ -18,7 +19,7 @@ function startServer() {
       process.exit(1);
     }
 
-    console.log(`Server listening at ${address}`);
+    app.log.info(`Server listening at ${address}`);
   });
 }
 

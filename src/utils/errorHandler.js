@@ -8,8 +8,8 @@
  */
 async function errorHandler(error, request, reply) {
   // Log the error and the request that caused it
-  console.error('Error:', error);
-  console.error('Request that caused the error:', request.url, request.method, request.params, request.body);
+  request.log.error('Error:', error);
+  request.log.error('Request that caused the error:', request.url, request.method, request.params, request.body);
 
   let statusCode;
   let errorMessage;

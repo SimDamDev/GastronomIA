@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import {validateRegionId} from '../utils/validators.js';
+import {validateRegionId} from '../utils/validators/arrayValidator.js';
 
 const regionSchema = new mongoose.Schema({
   name: {

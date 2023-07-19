@@ -1,4 +1,5 @@
 import fastify from 'fastify';
+import pino from 'fastify-pino';
 import staticFiles from './staticFiles.js';
 import routes from './routes/indexRoutes.js';
 import {dbConnect} from './services/db.js';
@@ -7,6 +8,10 @@ import {errorHandler} from './utils/errorHandler.js';
 // Instantiate a Fastify application
 /** @type {import('fastify').FastifyInstance} */
 const app = fastify();
+
+
+//Register the fastify-pino logger
+app.register(pino, config.logger);
 
 /**
  * Configure the static files' serving module.

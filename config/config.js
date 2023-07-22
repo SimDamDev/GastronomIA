@@ -1,6 +1,6 @@
 import 'dotenv/config.js';
-import { validateConfig } from '../src/utils/validator/index.js';
-import { createWriteStream } from 'fs';
+import { validateConfig } from '../src/utils/validators/index.js';
+import { createWriteStream, existsSync, mkdirSync, openSync, closeSync } from 'fs';
 
 /** @module config */
 
@@ -16,18 +16,33 @@ import { createWriteStream } from 'fs';
  * @property {boolean} logger.prettyPrint - Whether to pretty print the logs.
  * @property {Object} logger.stream - The stream to which to write the logs.
  */
+const logDir = '../logs';
+const logFile = `${logDir}/logs.txt`;
+
+// Check if the logs directory exists, if not, create it
+if (!existsSync(logDir)){
+    mkdirSync(logDir);
+}
+
+// Check if the logs.txt file exists, if not, create it
+if (!existsSync(logFile)){
+    closeSync(openSync(logFile, 'w'));
+}
+
 export const config = {
   requireUnitIcons: false,
   server: {
-    port: process.env.PORT,
+    port: Number(process.env.PORT),
     host: process.env.HOST,
   },
   logger: {
     level: 'info',
     prettyPrint: false,
-    stream: createWriteStream('../logs/logs.txt')
+    stream: createWriteStream(logFile)
   }
-};
+}
 
+
+console.log(`Server Port: ${config.server.port}, Type: ${typeof config.server.port}`)
 // Validate the configuration
 validateConfig(config);

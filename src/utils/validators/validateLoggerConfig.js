@@ -1,4 +1,4 @@
-import validateObject from './validateObject.js';
+import {validateObject} from './validateObject.js';
 
 /**
  * Validates the provided logger configuration object.
@@ -16,3 +16,5 @@ import validateObject from './validateObject.js';
       // Other rules...
     ]);
   }
+
+    export { validateLoggerConfig };

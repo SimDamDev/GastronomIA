@@ -5,7 +5,7 @@
 // Import models
 import Ingredient from './ingredientModel.js';
 import Recipe from './recipeModel.js';
-import Unit from './unitModel.js';
+import Unit from '../unit/model.js';
 import Region from './regionModel.js';
 import IngredientCategory from './ingredientCategory.js';
 

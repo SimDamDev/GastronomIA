@@ -6,7 +6,7 @@
 import {getIngredientsService, addIngredientService} from './ingredientService.js';
 import {getRecipesService, addRecipeService} from './recipeService.js';
 import RegionService from './regionService.js';
-import UnitService from './unitService.js';
+import UnitService from '../../unit/service.js';
 
 /**
  * Export all services.

@@ -28,3 +28,5 @@ function validateObject(object, rules) {
       }
     }
 }
+
+export { validateObject };

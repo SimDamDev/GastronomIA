@@ -1,5 +1,5 @@
-import { validateServerConfig } from './serverConfigValidator.js';
-import { validateLoggerConfig } from './loggerConfigValidator.js';
+import { validateServerConfig } from './validateServerConfig.js';
+import { validateLoggerConfig } from './validateLoggerConfig.js';
   
 
 /**

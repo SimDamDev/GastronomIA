@@ -3,7 +3,6 @@
  */
 
 import { Region } from '../../models/indexModel.js';
-import { paginate } from '../utils/pagination.js';
 
 /**
  * Class representing the service for regions.

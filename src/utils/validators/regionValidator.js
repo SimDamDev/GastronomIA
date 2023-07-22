@@ -1,4 +1,4 @@
-import Region from '../../../models/regionModel.js';
+import Region from '../../models/regionModel.js';
 
 /**
  * Validates the provided region ID.

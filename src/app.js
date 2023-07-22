@@ -1,44 +1,52 @@
 import fastify from 'fastify';
-import pino from 'fastify-pino';
+import pino from 'pino';
 import staticFiles from './staticFiles.js';
+import {config} from '../config/config.js';
 import routes from './routes/indexRoutes.js';
 import {dbConnect} from './services/standaloneServices/db.js';
 import {errorHandler} from './utils/errorHandler.js';
 
-// Instantiate a Fastify application
-/** @type {import('fastify').FastifyInstance} */
-const app = fastify();
-
-
-//Register the fastify-pino logger
-app.register(pino, config.logger);
-
 /**
- * Configure the static files' serving module.
- * @see {@link ./staticFiles.js}
+ * Creates a Fastify application with given dependencies.
+ *
+ * @param {Object} options - The options for the application.
+ * @param {Function} options.fastifyModule - The Fastify module.
+ * @param {Function} options.pinoModule - The fastify-pino logger module.
+ * @param {Function} options.staticFilesModule - The module for serving static files.
+ * @param {Function} options.routesModule - The module for application routes.
+ * @param {Function} options.dbConnectFunction - The function to establish a database connection.
+ * @param {Function} options.errorHandlerFunction - The function for handling application errors.
+ * @returns {Object} The Fastify application instance.
  */
-app.register(staticFiles);
+export function createApp({fastifyModule, pinoModule, staticFilesModule, routesModule, dbConnectFunction, errorHandlerFunction}) {
+  const app = fastifyModule();
+
+  app.register(pinoModule, config.logger);
+
+  app.register(staticFilesModule);
+
+  dbConnectFunction();
+
+  app.register(routesModule);
+
+  app.setErrorHandler(errorHandlerFunction);
+
+  return app;
+}
+
+// Create the application with the actual dependencies
+const app = createApp({
+    fastifyModule: fastify,
+    pinoModule: pino,
+    staticFilesModule: staticFiles,
+    routesModule: routes,
+    dbConnectFunction: dbConnect,
+    errorHandlerFunction: errorHandler,
+  });
 
 /**
- * Establish a connection to the MongoDB database.
- * @see {@link ./services/db.js}
- */
-dbConnect();
-
-/**
- * Register the main routes of the application.
- * @see {@link ./routes/indexRoutes.js}
- */
-app.register(routes);
-
-/**
- * Register a centralized error handling function for the application.
- * @see {@link ./utils/errorHandler.js}
- */
-app.setErrorHandler(errorHandler);
-
-/**
- * Export the Fastify application for use in other modules.
- * @type {import('fastify').FastifyInstance}
+ * The Fastify application instance, exported for use in other modules.
+ *
+ * @type {Object}
  */
 export default app;

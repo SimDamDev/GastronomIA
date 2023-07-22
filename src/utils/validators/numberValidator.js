@@ -6,6 +6,8 @@
  * @param {number} val - The number to check.
  * @returns {boolean} Returns `true` if the number is positive, `false` otherwise.
  */
-export async function isPositiveNumber(val) {
+function isPositiveNumber(val) {
     return val > 0;
 }
+
+export { isPositiveNumber };

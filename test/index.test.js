@@ -1,20 +1,29 @@
-const { startServer } = require('../src/startServer');
-const { serverEvents } = require('../src/index');
+import { startServer } from '../src/startServer.js'
+import { serverEvents } from '../src/index.js';
 
-jest.mock('../src/startServer');
+jest.mock('../src/startServer.js');
 
-describe('index', () => {
-  it('should emit "started" event when server starts successfully', async () => {
+describe('index.js', () => {
+  beforeEach(() => {
+    startServer.mockClear();
     startServer.mockResolvedValue({});
-    const mockEmit = jest.spyOn(serverEvents, 'emit');
-    require('../src/index');
-    expect(mockEmit).toHaveBeenCalledWith('started');
   });
 
-  it('should emit "error" event when server fails to start', async () => {
-    startServer.mockRejectedValue('error');
+  it('should call startServer and emit a "started" event when the server starts successfully', async () => {
     const mockEmit = jest.spyOn(serverEvents, 'emit');
-    require('../src/index');
-    expect(mockEmit).toHaveBeenCalledWith('error', 'error');
+    await import('./index.js');
+    expect(startServer).toHaveBeenCalled();
+    expect(mockEmit).toHaveBeenCalledWith('started');
+    mockEmit.mockRestore();
+  });
+
+  it('should call startServer and emit an "error" event when the server fails to start', async () => {
+    const mockError = new Error('Test error');
+    startServer.mockRejectedValue(mockError);
+    const mockEmit = jest.spyOn(serverEvents, 'emit');
+    await import('./index.js');
+    expect(startServer).toHaveBeenCalled();
+    expect(mockEmit).toHaveBeenCalledWith('error', mockError);
+    mockEmit.mockRestore();
   });
 });

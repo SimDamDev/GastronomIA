@@ -1,17 +1,32 @@
-const { serverEvents } = require('../src/index');
+import { serverEvents } from '../src/index.js';
+import '../src/serverEventListener.js'; 
 
 describe('serverEventListener', () => {
-  it('should log success message when "started" event is emitted', () => {
-    console.log = jest.fn();
-    serverEvents.emit('started');
-    expect(console.log).toHaveBeenCalledWith('Le serveur a démarré avec succès');
+  let exitSpy;
+  let logSpy;
+  let errorSpy;
+
+  beforeEach(() => {
+    exitSpy = jest.spyOn(process, 'exit').mockImplementation(() => {});
+    logSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
+    errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
   });
 
-  it('should log error message and exit process when "error" event is emitted', () => {
-    console.error = jest.fn();
-    process.exit = jest.fn();
-    serverEvents.emit('error', 'error');
-    expect(console.error).toHaveBeenCalledWith('Erreur lors du démarrage du serveur:', 'error');
-    expect(process.exit).toHaveBeenCalledWith(1);
+  afterEach(() => {
+    exitSpy.mockRestore();
+    logSpy.mockRestore();
+    errorSpy.mockRestore();
+  });
+
+  it('logs a message when the server has started', () => {
+    serverEvents.emit('started');
+    expect(logSpy).toHaveBeenCalledWith("Le serveur a démarré avec succès");
+  });
+
+  it('logs an error and calls process.exit when there is an error', () => {
+    const testError = new Error('Test error');
+    serverEvents.emit('error', testError);
+    expect(errorSpy).toHaveBeenCalledWith("Erreur lors du démarrage du serveur:", testError);
+    expect(exitSpy).toHaveBeenCalledWith(1);
   });
 });

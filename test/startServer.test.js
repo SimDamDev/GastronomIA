@@ -97,6 +97,7 @@ describe('startServer', () => {
    * Test for handling SIGTERM and SIGINT signals.
    */
   describe('signal handling', () => {
+    
     it('handles SIGTERM signal', (done) => {
       let closeCalled = 0;
 
